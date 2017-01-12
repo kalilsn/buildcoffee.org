@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.landing {
+    background: white;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-flow: row wrap;
+    max-width: 700px;
+    width: $nav-width;
+}
+.address-wrapper {
+    height: 200px;
+    padding-left: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+.logo {
+    height: 200px;
+}
+
+.nameplate {
+    height: 25%;
+    margin-bottom: .5em;
+}
+
+.address {
+    text-align: center;
+    margin-top: .5em;
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.social {
+    display: none;
+}

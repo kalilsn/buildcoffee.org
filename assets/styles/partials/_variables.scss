@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+
+// Font Face
+// @include fontface('FONT_NAME', 'assets/fonts/', 'FONT_FAMILY');
+
+// Structure
+$page-width: 1000px;
+
+// Text Selection
+$selection-color: orange;
+
+// Colors
+$red: red;
+$blue: blue;
+$font-size: 18px;
+$nav-height: 40px;
+$h-padding: 8 * $font-size;
+$v-padding: $nav-height + 2 * $font-size;
+$nav-width: 75%;
+$nav-font-weight: 700;
+$nav-selected-font-weight: 900;
+$nav-logo-height: $nav-height - 8;
+$nav-background: #fff;
+$nav-hover-background: #eee;
+$page-background-even: #fafafa;

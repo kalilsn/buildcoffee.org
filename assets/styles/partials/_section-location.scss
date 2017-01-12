@@ -1,0 +1,14 @@
+.location {
+
+    .address {
+        margin: 1em 0;
+        text-align: left;
+        display: block;
+        font-weight: 600;
+    }
+
+    .map iframe {
+        width: 100%;
+        height: 500px;
+    }
+}

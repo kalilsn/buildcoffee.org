@@ -1,0 +1,22 @@
+.events {
+    img {
+        height: 250px;
+        float: left;
+        margin: 0 1em 1em 0;
+    }
+
+    .event-title a {
+        font-weight: 700;
+    }
+
+    .event-time {
+        font-style: italic;
+    }
+
+    .upcoming {
+        font-weight: 700;
+        font-size: 1.3em;
+        text-transform: uppercase;
+        margin-bottom: 2em;
+    }
+}

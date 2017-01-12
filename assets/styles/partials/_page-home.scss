@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Home Page Template
+   ========================================================================== */
+
+body.home {}
+
+@import 'https://fonts.googleapis.com/css?family=Lato:400,400i,700,900';
+
+.section {
+    min-height: 100vh;
+    padding: $v-padding 0;
+    margin: 0 auto;
+    max-width: $page-width;
+
+    &:nth-child(2n) {
+        // background: $page-background-even;    
+    }
+}
+
+.img-grid {
+    margin-top: 4em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    & > div {
+        max-width: 100%;
+    }
+}
+
+.two-column.img-grid > div {
+    width: 49%;
+
+} 
+
+.three-column.img-grid > div {
+    width: 32%;
+}
+
+
+.divider {
+    width: 100%;
+}
+
+input, textarea {
+    margin: 0 0 5px 0;
+    border: 1px solid #848484;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+
+    &:focus {
+        border: 2px solid #B9B9B9;
+        outline: none;
+        background: #FDFDFD;
+    }
+}
+
+
+.contact-form-wrapper {
+    display: flex;
+    max-width: 600px;
+    justify-content: flex-start;
+    background: $page-background-even;
+    margin: 2em auto;
+    border-radius: 5px;
+    padding: 1em;
+    position: relative;
+
+    button {
+        display: none;
+    }
+
+    .loading-animation {
+        display: none;
+    }
+}
+
+.g-recaptcha {
+    float: left;
+}
+
+form {
+    width: 100%;
+    margin: 0;
+}
+
+.unknown-error {
+    display: none;
+}
+
+.contact-form-wrapper.waiting {
+    form {
+        filter: blur(2px);
+    }
+
+    .loading-animation {
+        display: flex;
+    }
+}
+
+.loading-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -2em;
+    margin-top: -0.5em;
+    width: 4em;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+
+    & > div {
+        width: 1em;
+        height: 1em;
+        background-color: #333;
+        border-radius: 100%;
+        display: inline-block;
+        animation: loading-fade 1s infinite ease-in-out both;
+
+        &:nth-child(2) {
+            animation-delay: .2s;
+        }
+        
+        &:nth-child(3) {
+            animation-delay: .4s;
+        }
+    }
+}
+
+.hover {
+    .st1 {
+        animation: multicolor-dark 6s infinite;
+    }
+
+    .st2 {
+        animation: multicolor-light 6s infinite;
+    }
+
+    #shadow {
+        opacity: 0;
+        transition: 0.3s;
+    }
+}
+
+#shadow,.st1,.st2 {
+    transition: 0.3s;
+}
+
+@keyframes loading-fade {
+    0% {opacity: 1}
+    100% {opacity: 0}
+}
+
+
+@keyframes multicolor-light {
+    0% {fill: rgb(238,160,165)}
+    13% {fill: rgb(237,176,13)}
+    25% {fill: rgb(226,237,13)}
+    38% {fill: rgb(133,237,13)}
+    50% {fill: rgb(13,237,195)}
+    63% {fill: rgb(99,170,255)}
+    75% {fill: rgb(203,160,238)}
+}
+@keyframes multicolor-dark {
+    0% {fill: rgb(178,52,94)}
+    13% {fill: rgb(178,132,10)}
+    25% {fill: rgb(170,178,10)}
+    38% {fill: rgb(100,178,10)}
+    50% {fill: rgb(10,178,147)}
+    63% {fill: rgb(75,128,192)}
+    75% {fill: rgb(153,120,179)}
+}
+
+
+@media (max-width: 800px) {
+    .header-wrapper.after-scroll {
+        .nav {
+            flex-wrap: wrap;
+        }
+
+        .nav li {
+            width: 100%;
+            display: none;
+
+            &.selected {
+                display: block;
+                order: -1;
+            }
+        }
+
+        .nav.open li {
+            display: block;
+            background: rgba(255,255,255,0.8);
+            border-bottom: 1px solid #bbb;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background-color: $nav-hover-background;
+            }            
+        }
+    }
+    
+}
+
+@media (max-width: 950px) {
+    
+    .section {
+        padding-left: 12.5%;
+        padding-right: 12.5%;
+    }
+
+    .header-wrapper.after-scroll {
+        .social {
+            display: none;
+        }
+        .logo {
+            margin-left: calc(6.25% - #{$nav-logo-height}/2);
+        }
+    }
+}
