@@ -19,9 +19,23 @@
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            the_title();
-            the_post_thumbnail();
-            echo '<div class="event-description">';
+
+            //Get event date/time
+            $custom = get_post_custom(get_the_ID());
+            $st = $custom["bc_events_startdate"][0];
+            $et = $custom["bc_events_enddate"][0];
+            
+            //Format date/time
+            $date = date("l, F j", $st);
+            $format = get_option('time_format');
+            $starttime = date($format, $st);
+            $endtime = date($format, $et);
+
+            //Output event
+            echo "<div class=\"event\"><h3 class=\"event-date\">$date</h3>";
+            the_title("<h4 class=\"event-title\">", "</h4>");
+            echo "<h5 class=\"event-time\">$starttime &mdash; $endtime</h5>";
+            the_post_thumbnail("thumbnail", array("class" => "event-thumbnail"));
             the_content();
             echo "</div><hr>";
         }

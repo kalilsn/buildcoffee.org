@@ -1,17 +1,5 @@
 .events {
-    img {
-        height: 250px;
-        float: left;
-        margin: 0 1em 1em 0;
-    }
 
-    .event-title a {
-        font-weight: 700;
-    }
-
-    .event-time {
-        font-style: italic;
-    }
 
     .upcoming {
         font-weight: 700;
@@ -19,4 +7,23 @@
         text-transform: uppercase;
         margin-bottom: 2em;
     }
+}
+
+.event-date {
+    margin-top: 0;
+}
+
+.event-title {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.event-time {
+    margin-top: 0;
+    font-style: italic;
+}
+
+.event-thumbnail {
+    float: left;
+    margin: 0 1em 1em 0;
 }
