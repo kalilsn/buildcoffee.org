@@ -127,12 +127,13 @@ module.exports = function(grunt) {
                 args: ["--verbose"],
                 exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc'],
                 recursive: true,
-                syncDestIgnoreExcl: true
+                syncDestIgnoreExcl: true,
+                ssh: true
             },
             production: {
                  options: {
                     dest: "/var/www/buildcoffee.org/wp-content/themes/buildcoffee",
-                    host: "kalilsn@45.55.186.139"
+                    host: "root@45.55.186.139"
                 }
             }
         }
