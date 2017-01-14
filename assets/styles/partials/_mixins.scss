@@ -89,3 +89,13 @@
 			 url($font-url + '/' + $font-name + '.svg#' + $font-name) format('svg');
 	}
 }
+
+@mixin links {
+    a:hover {
+        background: none;
+    }
+
+    a {
+        background-color: $link-color;
+    }
+}

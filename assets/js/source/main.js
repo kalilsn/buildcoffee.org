@@ -224,13 +224,13 @@
  * Readmore setup
  */
 
-    $('.event').readmore({
-        collapsedHeight: 300,
-        speed: 750,
-        moreLink: '<a href="#">Read more</a>',
-        lessLink: '<a href="#">Hide</a>',
-        afterToggle: getSectionHeights
-    });
+    // $('.event').readmore({
+    //     collapsedHeight: 300,
+    //     speed: 750,
+    //     moreLink: '<a href="#">Read more</a>',
+    //     lessLink: '<a href="#">Hide</a>',
+    //     afterToggle: getSectionHeights
+    // });
 
 /*
  * Colorful logo

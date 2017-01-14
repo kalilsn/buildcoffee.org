@@ -11,10 +11,16 @@ body.home {}
     padding: $v-padding 0;
     margin: 0 auto;
     max-width: $page-width;
-
     &:nth-child(2n) {
         // background: $page-background-even;    
     }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    
+    @include links();
 }
 
 .img-grid {

@@ -34,11 +34,24 @@
 
             //Output event
             echo "<div class=\"event\"><h3 class=\"event-date\">$date</h3>";
-            the_title("<a href=\"$url\" target=\"_blank\"><h4 class=\"event-title\">", "</h4></a>");
+            if (has_post_thumbnail()) {
+                echo '<div class="event-thumbnail-container">';
+                the_post_thumbnail("thumbnail", array("class" => "event-thumbnail"));
+                echo '</div>';
+            }
+            echo '<div class="event-info">';
+            if (empty($url)) {
+                the_title("<h4 class=\"event-title\">", "</h4>");
+            }
+            else {
+                the_title("<a href=\"$url\" target=\"_blank\"><h4 class=\"event-title\">", "</h4></a>");    
+            }
             echo "<h5 class=\"event-time\">$starttime &mdash; $endtime</h5>";
-            the_post_thumbnail("thumbnail", array("class" => "event-thumbnail"));
             the_content();
-            echo "</div><hr>";
+            if (!empty($url)) {
+                echo "<a href=\"$url\" class=\"events-more\" target=\"_blank\">Learn more &rarr;</a>";
+            }
+            echo "</div></div>";
         }
     }
 ?>
