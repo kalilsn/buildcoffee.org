@@ -12,10 +12,28 @@ module.exports = function(grunt) {
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify']
+                tasks: ['jshint', 'uglify'],
+                options: {
+                   livereload: true
+                }
             },
             images: {
                 files: ['assets/images/**/*.{png,jpg,gif,svg}'],
+                options: {
+                    livereload: true
+                }
+            },
+            css: {
+                files: ['style.css'],
+                options: {
+                    livereload: true
+                }
+            },
+            php: {
+                files: ['*.php'],
+                options: {
+                    livereload: true
+                }
             }
         },
 
