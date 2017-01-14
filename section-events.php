@@ -16,12 +16,14 @@
         "meta_query" => array("key" => "bc_events_enddate", "value" => strtotime("yesterday"), "type" => "numeric", "compare" => ">=")
     );
     $query = new WP_Query($args);
-    while ($query->have_posts()) {
-        $query->the_post();
-        the_title();
-        the_post_thumbnail();
-        echo '<div class="event-description">';
-        the_content();
-        echo "</div><hr>";
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            the_title();
+            the_post_thumbnail();
+            echo '<div class="event-description">';
+            the_content();
+            echo "</div><hr>";
+        }
     }
 ?>
