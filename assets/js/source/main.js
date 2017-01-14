@@ -224,8 +224,8 @@
  * Readmore setup
  */
 
-    $('.event-description').readmore({
-        collapsedHeight: 150,
+    $('.event').readmore({
+        collapsedHeight: 300,
         speed: 750,
         moreLink: '<a href="#">Read more</a>',
         lessLink: '<a href="#">Hide</a>',
