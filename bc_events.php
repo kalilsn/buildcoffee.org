@@ -108,6 +108,7 @@ function bc_events_meta() {
     $meta_ed = $custom["bc_events_enddate"][0];
     $meta_st = $meta_sd;
     $meta_et = $meta_ed;
+    $meta_url = $custom["bc_events_url"][0];
 
     //Get user's time format
     $time_format = get_option('time_format');
@@ -132,6 +133,7 @@ function bc_events_meta() {
     ?>
     <div class="bc-meta">
         <ul>
+            <li><label>External URL</label><input class="bcurl" name="bc_events_url" value="<?php echo $meta_url; ?>" /></li>
             <li><label>Start Date</label><input name="bc_events_startdate" class="bcdate" value="<?php echo $clean_sd; ?>" /></li>
             <li><label>Start Time</label><input name="bc_events_starttime" value="<?php echo $clean_st; ?>" /></li>
             <li><label>End Date</label><input name="bc_events_enddate" class="bcdate" value="<?php echo $clean_ed; ?>" /></li>
@@ -171,7 +173,8 @@ function save_bc_events() {
     }
     $updateendd = strtotime ( $_POST["bc_events_enddate"] . $_POST["bc_events_endtime"]);
     update_post_meta($post->ID, "bc_events_enddate", $updateendd);
- 
+
+    update_post_meta($post->ID, "bc_events_url", $_POST["bc_events_url"]); 
 }
 
 //Customize update messages

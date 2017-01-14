@@ -15,5 +15,5 @@ th#bc_col_menu_cat,th#bc_col_menu_title,th#bc_col_menu_size{width:150px}
 .bc-meta {  }
 .bc-meta ul li { height: 20px; clear:both; margin: 0 0 15px 0;}
 .bc-meta ul li label { width: 100px; display:block; float:left; padding-top:4px; }
-.bc-meta ul li input { width:125px; display:block; float:left; }
+.bc-meta ul li input { width:250px; display:block; float:left; }
 .bc-meta ul li em { width: 200px; display:block; float:left; color:gray; margin-left:10px; padding-top: 4px}

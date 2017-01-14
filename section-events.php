@@ -20,10 +20,11 @@
         while ($query->have_posts()) {
             $query->the_post();
 
-            //Get event date/time
+            //Get event date/time and url
             $custom = get_post_custom(get_the_ID());
             $st = $custom["bc_events_startdate"][0];
             $et = $custom["bc_events_enddate"][0];
+            $url = $custom["bc_events_url"][0];
             
             //Format date/time
             $date = date("l, F j", $st);
@@ -33,7 +34,7 @@
 
             //Output event
             echo "<div class=\"event\"><h3 class=\"event-date\">$date</h3>";
-            the_title("<h4 class=\"event-title\">", "</h4>");
+            the_title("<a href=\"$url\" target=\"_blank\"><h4 class=\"event-title\">", "</h4></a>");
             echo "<h5 class=\"event-time\">$starttime &mdash; $endtime</h5>";
             the_post_thumbnail("thumbnail", array("class" => "event-thumbnail"));
             the_content();
