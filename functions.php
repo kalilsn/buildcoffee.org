@@ -115,3 +115,9 @@ function customize_menus() {
 
 add_action( 'admin_menu', 'customize_menus' );
 
+//Image setup
+add_image_size( 'medium_large', '1024', '0', false ); 
+add_image_size( 'admin', '60', '60', false ); 
+add_image_size( 'medium_large', '1024', '0', false ); 
+add_image_size( 'small', '300', '300', false ); 
+add_image_size( 'medium-small', '500', '500', false ); 
