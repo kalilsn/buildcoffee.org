@@ -1371,6 +1371,12 @@ form {
       flex-flow: row wrap;
   -ms-flex-line-pack: start;
       align-content: flex-start;
+  padding: 2em 0;
+  border-bottom: 2px dotted #717171;
+}
+
+.event:last-child {
+  border-bottom: none;
 }
 
 .event-date {
