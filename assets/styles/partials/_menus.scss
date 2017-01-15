@@ -102,11 +102,17 @@ nav {
         }
     }
 
-    #shadow {
-        display: none;
-    }
-
     .st1,.st2 {
         fill: #000;
+        animation: none;
+    }
+
+    .hover {
+        .st1 {
+            animation: multicolor-dark 6s infinite;
+        }
+        .st2 {
+            animation: multicolor-light 6s infinite;
+        }
     }
 }

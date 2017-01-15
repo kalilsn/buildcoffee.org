@@ -134,18 +134,31 @@ form {
     }
 }
 
-.hover {
-    .st1 {
-        animation: multicolor-dark 6s infinite;
-    }
 
+.st1 {
+    animation: multicolor-dark 6s infinite;
+}
+
+.st2 {
+    animation: multicolor-light 6s infinite;
+}
+
+#shadow {
+    display: none;
+}
+
+.hover {
     .st2 {
-        animation: multicolor-light 6s infinite;
+        fill: #fff;
+        animation: none;
+    }
+    .st1 {
+        fill: #bbb;
+        animation: none;
     }
 
     #shadow {
-        opacity: 0;
-        transition: 0.3s;
+        display: inherit;
     }
 }
 
