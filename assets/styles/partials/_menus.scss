@@ -108,6 +108,9 @@ nav {
     }
 
     .hover {
+        #shadow {
+            display: none;
+        }
         .st1 {
             animation: multicolor-dark 6s infinite;
         }

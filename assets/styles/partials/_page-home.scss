@@ -19,6 +19,10 @@ body.home {}
     align-items: center;
     flex-wrap: wrap;
     align-content: center;
+
+    p {
+        width: 100%;
+    }
     
     @include links();
 }

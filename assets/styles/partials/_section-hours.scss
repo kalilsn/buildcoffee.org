@@ -1,6 +1,11 @@
 .hours {
     padding: 0 $h-padding;
-    font-size: 1.7em;
+    font-size: 1.2em;
+
+    ul {
+        font-size: 1.7em;
+        margin-bottom: 3em;
+    }
     
     .day {
         margin-right: 1em;
