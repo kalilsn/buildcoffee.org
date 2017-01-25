@@ -79,6 +79,11 @@
         if (fixedOn === 0) {
             fixedOn = $(window).height();
         }
+        var itemIsSelected = false;
+        var scrolledDown = false;
+        console.log($(window).scrollTop());
+        console.log(fixedOn);
+        console.log(scrolledDown);
         // console.log(fixedOn);
         getSectionHeights();
 
@@ -131,29 +136,60 @@
         function highlightMenuItem() {
             var location = $(window).scrollTop() + 40;
             var height = $(document).height();
+            if (location < sectionHeights[0]) {
+                if (!itemIsSelected) {
+                    $("nav li:first-child>a").addClass("selected");
+                    itemIsSelected = true;
+                    console.log("selected first item");
+                }
+            }
             for (var i=0; i<sectionHeights.length; i++) {
                 if (location >= sectionHeights[i] && location < sectionHeights[i+1]) {
-                    // console.log(location);
-                    $(".selected").removeClass("selected");
-                    $("nav>ul li:nth-child(" + (i+1) + ")").addClass("selected");
-                    break;
+                    var selected = $("nav>ul li:nth-child(" + (i+1) + ")>a");
+                    //If element is already selected, do nothing 
+                    if (selected.hasClass("selected")) {
+                        break;
+                    }
+                    //Otherwise remove class from other element and add to new one
+                    else {
+                       $(".selected").removeClass("selected");
+                        console.log("cleared selections");
+                        selected.addClass("selected");
+                        console.log("selected new item");
+                        itemIsSelected = true;
+                        break; 
+                    }
+
                 }
             }
         }
 
         $(window).scroll(function() {
             if ($(window).scrollTop() > fixedOn) {
-                $("#header-wrapper").removeClass("before-scroll").addClass("after-scroll");
+                if (!scrolledDown) {
+                    $("#header-wrapper").removeClass("before-scroll").addClass("after-scroll");
+                    scrolledDown = true;
+                    console.log("scrolled down");
+                }
                 throttle(highlightMenuItem(), 250);
                 if (!$(".selected").length) {
-                    $(".nav li:first-child").addClass("selected");
-                    // console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
+                    $("nav li:first-child>a").addClass("selected");
+                    console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
                 }
             }
 
             else if ($(window).scrollTop() <= fixedOn) {
-                $("#header-wrapper").removeClass("after-scroll").addClass("before-scroll");
-                $(".nav li.selected").removeClass("selected");
+                if (scrolledDown) {
+                    $("#header-wrapper").removeClass("after-scroll").addClass("before-scroll");
+                    scrolledDown = false;
+                    console.log("scrolled up");
+                }
+                if (itemIsSelected) {
+                    $("nav li>a.selected").removeClass("selected");
+                    itemIsSelected = false;
+                    console.log("cleared selections on scroll up");
+                }
+                
                 if ($(window).width() < 800) {
                     fixedOn = $(window).height();
                 }
