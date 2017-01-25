@@ -533,7 +533,7 @@ html {
 }
 @media (max-width: 767px) {
   html {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 @media (min-width: 1920px) {
@@ -1114,7 +1114,7 @@ object {
 }
 @media (max-width: 767px) {
   .section {
-    padding: 60px 10px;
+    padding: 60px 20px;
   }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -1501,9 +1501,25 @@ form {
 .hours {
   font-size: 1.2em;
 }
+@media (max-width: 767px) {
+  .hours {
+    font-size: 1em;
+  }
+}
+@media (max-width: 767px) {
+  .hours {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 .hours ul {
   font-size: 1.7em;
   margin-bottom: 3em;
+}
+@media (max-width: 767px) {
+  .hours ul {
+    font-size: 1.3em;
+  }
 }
 .hours .day {
   margin-right: 1em;

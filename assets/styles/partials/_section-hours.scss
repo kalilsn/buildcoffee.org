@@ -1,8 +1,18 @@
 .hours {
     font-size: 1.2em;
+    @include phone {
+        font-size: 1em;
+    }
+    @include phone {
+        padding-left: 0;
+        padding-right: 0;
+    }
 
     ul {
         font-size: 1.7em;
+        @include phone {
+            font-size: 1.3em;
+        }
         margin-bottom: 3em;
     }
     

@@ -21,7 +21,7 @@ html {
     box-sizing: border-box;
     font-size: 18px;
     @include phone {
-        font-size: 14px;
+        font-size: 16px;
     }
     @include large {
         font-size: 20px;

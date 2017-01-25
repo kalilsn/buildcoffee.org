@@ -95,7 +95,7 @@
         bindNav();
     }
 
-    function openNav(e) {
+    function openNav() {
         if ($(this).parent().hasClass("selected")) {
             $("#nav").addClass("open");
             $(this).click(closeNav);
