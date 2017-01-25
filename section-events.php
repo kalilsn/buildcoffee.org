@@ -54,4 +54,9 @@
             echo "</div></div>";
         }
     }
+    //If no events, display page
+    else {
+        $page = get_page_by_title("No Events");
+        echo "<p>$page->post_content</p>";
+    }
 ?>

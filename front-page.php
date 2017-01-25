@@ -10,7 +10,7 @@
 get_header(); ?>
 
 <?php
-	$args = array("post_type" => "page", "orderby" => "menu_order", "order" => "ASC");
+	$args = array("post_type" => "page", "orderby" => "menu_order", "order" => "ASC", "post_parent" => 0);
 	$query = new WP_Query($args);
 	while ($query->have_posts()) {
 		$query->the_post();
