@@ -57,6 +57,7 @@
     //If no events, display page
     else {
         $page = get_page_by_title("No Events");
-        echo "<p>$page->post_content</p>";
+        $content = apply_filters("the_content", $page->post_content);
+        echo $content;
     }
 ?>
