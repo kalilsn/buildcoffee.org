@@ -13,6 +13,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import "partials/mixins";
 @import "partials/variables";
 @import "partials/normalize";
+@import "partials/layout";
 
 // Globals
 @import "partials/h5bp-global";
@@ -20,12 +21,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import "partials/grid";
 
 // Layout
-@import "partials/layout";
 @import "partials/header";
 @import "partials/footer";
 
 // Menus, Page and Post styles
-@import "partials/menus";
 @import "partials/page-post";
 
 // Page Templates

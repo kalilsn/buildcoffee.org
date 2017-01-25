@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
    ========================================================================== */
 /*
  * Mixin for easy media queries
- * @include bp(tablet) { SCSS here };
+ * @include bp(1024px) { SCSS here };
 */
 /*
  * Mixin for clearfix
@@ -424,6 +424,9 @@ th {
   padding: 0;
 }
 
+/* ==========================================================================
+   Layout
+   ========================================================================== */
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -527,6 +530,16 @@ html {
   font-size: 18px;
   line-height: 1.5;
   font-family: 'Lato', sans-serif;
+}
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1920px) {
+  html {
+    font-size: 20px;
+  }
 }
 
 p {
@@ -742,13 +755,9 @@ address {
 }
 
 /* ==========================================================================
-   Layout
-   ========================================================================== */
-/* ==========================================================================
    Header
    ========================================================================== */
 .landing {
-  background: white;
   padding: 0;
   height: 100vh;
   display: -webkit-box;
@@ -757,25 +766,44 @@ address {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-size: cover;
+}
+@media (min-width: 1920px) {
+  .landing {
+    background-image: url("assets/images/header-background-large.jpg");
+  }
+}
+@media (min-width: 1024px) and (max-width: 1919px) {
+  .landing {
+    background-image: url("assets/images/header-background-desktop.jpg");
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .landing {
+    background-image: url("assets/images/header-background-tablet.jpg");
+  }
+}
+@media (max-width: 767px) {
+  .landing {
+    background-image: url("assets/images/header-background-phone.jpg");
+  }
 }
 
 .header-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-line-pack: center;
       align-content: center;
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
-  max-width: 700px;
-  width: 75%;
+  width: 90%;
 }
 
 .address-wrapper {
-  height: 200px;
-  padding-left: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -787,45 +815,67 @@ address {
       -ms-flex-pack: center;
           justify-content: center;
   margin-bottom: 3em;
+  max-width: 100%;
 }
 
 .logo {
   height: 200px;
 }
 
+.before-scroll .logo-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 282.8px;
+  height: 282.8px;
+  width: 282.8px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3em;
+  margin-right: 2em;
+}
+@media (max-width: 767px) {
+  .before-scroll .logo-wrapper {
+    margin-right: 0;
+  }
+}
+
 .nameplate {
-  height: 25%;
+  height: 70px;
   margin-bottom: .5em;
+  background: white;
+  padding: 5px 15px;
 }
 
 .address {
   text-align: center;
   margin-top: .5em;
   font-weight: 700;
-  font-size: 1em;
+  font-size: 1.5em;
+  background: white;
+  padding: 5px 15px;
 }
 
 .social {
   display: none;
 }
 
-.credit {
-  text-align: center;
-  font-size: .8em;
-  padding: .5em 0;
-  background: #eee;
-}
-.credit a {
-  text-decoration: none;
-}
-
-/* ==========================================================================
-   Menus
-   ========================================================================== */
 nav {
+  background: white;
   width: 100%;
+  max-width: 821px;
 }
 
+@media (max-width: 767px) {
+  .before-scroll nav {
+    display: none;
+  }
+}
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -835,8 +885,6 @@ nav {
           justify-content: space-between;
   height: 40px;
   line-height: 40px;
-  min-width: 500px;
-  max-width: 700px;
   width: 100%;
 }
 .nav li {
@@ -855,7 +903,7 @@ nav {
 }
 .nav a {
   text-decoration: none;
-  color: #6f6e6e;
+  color: #555;
   text-transform: uppercase;
   font-weight: 700;
   display: block;
@@ -885,10 +933,14 @@ nav {
 .header-wrapper.after-scroll .address-wrapper {
   display: none;
 }
+.header-wrapper.after-scroll .logo-wrapper {
+  margin-left: -webkit-calc(6.25% - 32px/2);
+  margin-left: calc(6.25% - 32px/2);
+  cursor: pointer;
+}
 .header-wrapper.after-scroll .logo {
   height: 32px;
-  margin-left: 56px;
-  cursor: pointer;
+  vertical-align: middle;
 }
 .header-wrapper.after-scroll .nav {
   position: absolute;
@@ -947,6 +999,16 @@ nav {
 .header-wrapper.after-scroll .hover .st2 {
   -webkit-animation: multicolor-light 6s infinite;
           animation: multicolor-light 6s infinite;
+}
+
+.credit {
+  text-align: center;
+  font-size: .8em;
+  padding: .5em 0;
+  background: #eee;
+}
+.credit a {
+  text-decoration: none;
 }
 
 /* ==========================================================================
@@ -1033,7 +1095,7 @@ object {
    ========================================================================== */
 .section {
   min-height: 100vh;
-  padding: 76px 0;
+  padding: 60px 0;
   margin: 0 auto;
   max-width: 1000px;
   display: -webkit-box;
@@ -1049,6 +1111,16 @@ object {
       flex-wrap: wrap;
   -ms-flex-line-pack: center;
       align-content: center;
+}
+@media (max-width: 767px) {
+  .section {
+    padding: 60px 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section {
+    padding: 60px 12.5%;
+  }
 }
 .section p {
   width: 100%;
@@ -1347,17 +1419,8 @@ form {
   }
 }
 @media (max-width: 950px) {
-  .section {
-    padding-left: 12.5%;
-    padding-right: 12.5%;
-  }
-
   .header-wrapper.after-scroll .social {
     display: none;
-  }
-  .header-wrapper.after-scroll .logo {
-    margin-left: -webkit-calc(6.25% - 32px/2);
-    margin-left: calc(6.25% - 32px/2);
   }
 }
 .events .upcoming {
@@ -1409,6 +1472,11 @@ form {
           flex: 0 1 auto;
   margin: 0 1em 1em 0;
 }
+@media (max-width: 767px) {
+  .event-thumbnail-container {
+    display: none;
+  }
+}
 
 .event-thumbnail {
   max-height: 100%;
@@ -1431,7 +1499,6 @@ form {
 }
 
 .hours {
-  padding: 0 144px;
   font-size: 1.2em;
 }
 .hours ul {

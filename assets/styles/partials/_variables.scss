@@ -15,8 +15,6 @@ $selection-color: orange;
 $link-color: #f7cfcf;
 $font-size: 18px;
 $nav-height: 40px;
-$h-padding: 8 * $font-size;
-$v-padding: $nav-height + 2 * $font-size;
 $nav-width: 75%;
 $nav-font-weight: 700;
 $nav-selected-font-weight: 900;
@@ -24,3 +22,12 @@ $nav-logo-height: $nav-height - 8;
 $nav-background: #fff;
 $nav-hover-background: #eee;
 $page-background-even: #fafafa;
+
+$logo-height: 200px;
+$nameplate-height: 70px;
+$landing-width: 65%;
+
+//Media queries
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$large-width: 1920px;

@@ -40,6 +40,9 @@
 .event-thumbnail-container {
     flex: 0 1 auto;
     margin: 0 1em 1em 0;
+    @include phone {
+        display: none;
+    }
 }
 .event-thumbnail {
     max-height: 100%; 

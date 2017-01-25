@@ -19,7 +19,13 @@ body { }
 
 html {
     box-sizing: border-box;
-    font-size: $font-size;
+    font-size: 18px;
+    @include phone {
+        font-size: 14px;
+    }
+    @include large {
+        font-size: 20px;
+    }
     line-height: 1.5;
     font-family: 'Lato', sans-serif;
 }

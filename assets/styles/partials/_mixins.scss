@@ -4,17 +4,16 @@
 
 /*
  * Mixin for easy media queries
- * @include bp(tablet) { SCSS here };
+ * @include bp(1024px) { SCSS here };
 */
-@mixin bp($point) {
-	@if $point == biggie {
-		@media (max-width : 1600px) { @content; }
+@mixin bp-min($point) {
+	@media (min-width: $point) {
+		@content;
 	}
-	@if $point == tablet {
-		@media (max-width : 1024px) { @content; }
-	}
-	@else if $point == phone {
-		@media (max-width : 768px) { @content; }
+}
+@mixin bp-max($point) {
+	@media (max-width: $point) {
+		@content;
 	}
 }
 

@@ -8,7 +8,13 @@ body.home {}
 
 .section {
     min-height: 100vh;
-    padding: $v-padding 0;
+    padding: 60px 0;
+    @include phone {
+        padding: 60px 10px;
+    }
+    @include tablet {
+        padding: 60px 12.5%;
+    }
     margin: 0 auto;
     max-width: $page-width;
     &:nth-child(2n) {
@@ -229,19 +235,10 @@ form {
     
 }
 
-@media (max-width: 950px) {
-    
-    .section {
-        padding-left: 12.5%;
-        padding-right: 12.5%;
-    }
-
+@include bp-max(950px) {
     .header-wrapper.after-scroll {
         .social {
             display: none;
-        }
-        .logo {
-            margin-left: calc(6.25% - #{$nav-logo-height}/2);
         }
     }
 }
