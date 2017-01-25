@@ -136,19 +136,18 @@
                     // console.log(location);
                     $(".selected").removeClass("selected");
                     $("nav>ul li:nth-child(" + (i+1) + ")").addClass("selected");
-                    getSectionHeights();
                     break;
                 }
             }
         }
 
         $(window).scroll(function() {
-            // console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
             if ($(window).scrollTop() > fixedOn) {
                 $("#header-wrapper").removeClass("before-scroll").addClass("after-scroll");
                 throttle(highlightMenuItem(), 250);
                 if (!$(".selected").length) {
                     $(".nav li:first-child").addClass("selected");
+                    // console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
                 }
             }
 
