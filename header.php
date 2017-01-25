@@ -25,7 +25,7 @@
 
 <body>
 <!-- Preload background image -->
-<img src="assets/images/header-background-phone" srcset="assets/images/header-background-phone 768w, assets/images/header-background-tablet 1024w, assets/images/header-background-desktop 1920w, assets/images/header-background-large 2560w">
+<img src="assets/images/header-background-phone.jpg" srcset="assets/images/header-background-phone.jpg 768w, assets/images/header-background-tablet.jpg 1024w, assets/images/header-background-desktop.jpg 1920w, assets/images/header-background-large.jpg 2560w">
 <!--[if lt IE 9]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
