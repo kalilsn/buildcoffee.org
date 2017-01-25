@@ -72,120 +72,121 @@
 /*
  * Scrolling navigation
  */
-    var sectionHeights = [];
-    var sectionNames = [];
-    var fixedOn = $(".nav").offset().top;
-    if (fixedOn === 0) {
-        fixedOn = $(window).height();
-    }
-    // console.log(fixedOn);
-    getSectionHeights();
-
-
-    //Mobile menu
-
-    function bindNav() {
-        if ($(window).width() < 800) {
-            $(".nav a").click(openNav);
+    $(window).on("load", function() {
+        var sectionHeights = [];
+        var sectionNames = [];
+        var fixedOn = $(".nav").offset().top;
+        if (fixedOn === 0) {
+            fixedOn = $(window).height();
         }
-    }
-
-    function closeNav() {
-        $("#nav").removeClass("open");
-        bindNav();
-    }
-
-    function openNav() {
-        if ($(this).parent().hasClass("selected")) {
-            $("#nav").addClass("open");
-            $(this).click(closeNav);
-            return false;
-        }
-        else {
-            closeNav();
-        }
-    }
-
-
-    function onResize() {
+        // console.log(fixedOn);
         getSectionHeights();
-        bindNav();
-    }
 
-    $(window).resize(debounce(onResize, 100));
-    bindNav();
 
-    //Get offset of each section
-    function getSectionHeights() {
-        sectionHeights = [];
-        $(".section").each(function(i) {
-            sectionHeights[i] = $(this).offset().top;
-            sectionNames[i] = this.id;
-        });
-        sectionHeights.push($(document).height());
-        // console.log("section heights: ", sectionHeights);
-    }
+        //Mobile menu
 
-    //Highlight current section in nav
-    function highlightMenuItem() {
-        var location = $(window).scrollTop() + 40;
-        var height = $(document).height();
-        for (var i=0; i<sectionHeights.length; i++) {
-            if (location >= sectionHeights[i] && location < sectionHeights[i+1]) {
-                // console.log(location);
-                $(".selected").removeClass("selected");
-                $("nav>ul li:nth-child(" + (i+1) + ")").addClass("selected");
-                getSectionHeights();
-                break;
-            }
-        }
-    }
-
-    $(window).scroll(function() {
-        // console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
-        if ($(window).scrollTop() > fixedOn) {
-            $("#header-wrapper").removeClass("before-scroll").addClass("after-scroll");
-            throttle(highlightMenuItem(), 250);
-            if (!$(".selected").length) {
-                $(".nav li:first-child").addClass("selected");
-            }
-        }
-
-        else if ($(window).scrollTop() <= fixedOn) {
-            $("#header-wrapper").removeClass("after-scroll").addClass("before-scroll");
-            $(".nav li.selected").removeClass("selected");
+        function bindNav() {
             if ($(window).width() < 800) {
-                fixedOn = $(window).height();
+                $(".nav a").click(openNav);
+            }
+        }
+
+        function closeNav() {
+            $("#nav").removeClass("open");
+            bindNav();
+        }
+
+        function openNav() {
+            if ($(this).parent().hasClass("selected")) {
+                $("#nav").addClass("open");
+                $(this).click(closeNav);
+                return false;
             }
             else {
-                fixedOn = $(".nav").offset().top;
+                closeNav();
             }
         }
-    });
 
-    $(window).trigger("scroll");
 
-    //Animate scroll to page section
-    $(".nav a").click(function() {
-        var dest = $($(this).attr("href")).offset().top;
-        var distance = Math.abs(dest - $(window).scrollTop());
-        var scrollSpeed = distance/2.5;
-        $('html, body').animate({
-            scrollTop: dest
-        }, scrollSpeed, highlightMenuItem);
-        return false;
-    });
-
-    //Scroll to top
-    $('.logo').click(function() {
-        var scrollSpeed = $(window).scrollTop()/2.5;
-        if ($(".selected").length) {
-            $('html, body').animate({
-                scrollTop: 0
-            }, scrollSpeed);
+        function onResize() {
+            getSectionHeights();
+            bindNav();
         }
-    });
 
+        $(window).resize(debounce(onResize, 100));
+        bindNav();
+
+        //Get offset of each section
+        function getSectionHeights() {
+            sectionHeights = [];
+            $(".section").each(function(i) {
+                sectionHeights[i] = $(this).offset().top;
+                sectionNames[i] = this.id;
+            });
+            sectionHeights.push($(document).height());
+            // console.log("section heights: ", sectionHeights);
+        }
+
+        //Highlight current section in nav
+        function highlightMenuItem() {
+            var location = $(window).scrollTop() + 40;
+            var height = $(document).height();
+            for (var i=0; i<sectionHeights.length; i++) {
+                if (location >= sectionHeights[i] && location < sectionHeights[i+1]) {
+                    // console.log(location);
+                    $(".selected").removeClass("selected");
+                    $("nav>ul li:nth-child(" + (i+1) + ")").addClass("selected");
+                    getSectionHeights();
+                    break;
+                }
+            }
+        }
+
+        $(window).scroll(function() {
+            // console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
+            if ($(window).scrollTop() > fixedOn) {
+                $("#header-wrapper").removeClass("before-scroll").addClass("after-scroll");
+                throttle(highlightMenuItem(), 250);
+                if (!$(".selected").length) {
+                    $(".nav li:first-child").addClass("selected");
+                }
+            }
+
+            else if ($(window).scrollTop() <= fixedOn) {
+                $("#header-wrapper").removeClass("after-scroll").addClass("before-scroll");
+                $(".nav li.selected").removeClass("selected");
+                if ($(window).width() < 800) {
+                    fixedOn = $(window).height();
+                }
+                else {
+                    fixedOn = $(".nav").offset().top;
+                }
+            }
+        });
+
+        $(window).trigger("scroll");
+
+        //Animate scroll to page section
+        $(".nav a").click(function() {
+            var dest = $($(this).attr("href")).offset().top;
+            var distance = Math.abs(dest - $(window).scrollTop());
+            var scrollSpeed = distance/2.5;
+            $('html, body').animate({
+                scrollTop: dest
+            }, scrollSpeed, highlightMenuItem);
+            return false;
+        });
+
+        //Scroll to top
+        $('.logo').click(function() {
+            var scrollSpeed = $(window).scrollTop()/2.5;
+            if ($(".selected").length) {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, scrollSpeed);
+            }
+        });
+    });
 /*
  * AJAX contact form
  */
