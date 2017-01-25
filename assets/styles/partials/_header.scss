@@ -90,16 +90,6 @@ nav {
     li {        
         text-align: center;
         flex-grow: 1;
-
-        &:hover {
-            background-color: $nav-hover-background;
-        }
-
-        &.selected a {
-            color: #000;
-            background-color: $nav-hover-background;
-            font-weight: $nav-selected-font-weight;
-        }
     }
 
     a {
@@ -109,6 +99,20 @@ nav {
         font-weight: $nav-font-weight;
         display: block;
         width: 100%;
+        background: white;
+
+        &:hover {
+            background: $nav-hover-background;
+        }
+        &.selected {
+            color: #000;
+            background-color: #eee;
+            border-bottom-color: #6DAA7E;
+            border-bottom-style: solid;
+            border-bottom-width: 4px;
+            height: 40px;
+            // font-weight: $nav-selected-font-weight;
+        }
     }
 }
 

@@ -893,14 +893,6 @@ nav {
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
-.nav li:hover {
-  background-color: #eee;
-}
-.nav li.selected a {
-  color: #000;
-  background-color: #eee;
-  font-weight: 900;
-}
 .nav a {
   text-decoration: none;
   color: #555;
@@ -908,6 +900,18 @@ nav {
   font-weight: 700;
   display: block;
   width: 100%;
+  background: white;
+}
+.nav a:hover {
+  background: #eee;
+}
+.nav a.selected {
+  color: #000;
+  background-color: #eee;
+  border-bottom-color: #6DAA7E;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  height: 40px;
 }
 
 .header-wrapper.after-scroll {

@@ -79,7 +79,6 @@ function scrolling_nav_links($atts, $item, $args) {
     
     $anchor = '#' . end(explode("/", rtrim($atts['href'], '/')));
     $atts['href'] = $anchor;
-
     return $atts;
 }
 
