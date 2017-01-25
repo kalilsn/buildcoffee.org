@@ -74,8 +74,10 @@
  */
     var sectionHeights = [];
     var sectionNames = [];
-    var scrollSpeed = 700;
     var fixedOn = $(".nav").offset().top;
+    if (fixedOn === 0) {
+        fixedOn = $(window).height();
+    }
     // console.log(fixedOn);
     getSectionHeights();
 
@@ -93,7 +95,7 @@
         bindNav();
     }
 
-    function openNav() {
+    function openNav(e) {
         if ($(this).parent().hasClass("selected")) {
             $("#nav").addClass("open");
             $(this).click(closeNav);
@@ -126,7 +128,7 @@
 
     //Highlight current section in nav
     function highlightMenuItem() {
-        var location = $(window).scrollTop() + 200;
+        var location = $(window).scrollTop() + 40;
         var height = $(document).height();
         for (var i=0; i<sectionHeights.length; i++) {
             if (location >= sectionHeights[i] && location < sectionHeights[i+1]) {
@@ -140,8 +142,9 @@
     }
 
     $(window).scroll(function() {
+        // console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
         if ($(window).scrollTop() > fixedOn) {
-            $("#header-wrapper").addClass("after-scroll");
+            $("#header-wrapper").removeClass("before-scroll").addClass("after-scroll");
             throttle(highlightMenuItem(), 250);
             if (!$(".selected").length) {
                 $(".nav li:first-child").addClass("selected");
@@ -149,11 +152,14 @@
         }
 
         else if ($(window).scrollTop() <= fixedOn) {
-            // console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
-            $("#header-wrapper").removeClass("after-scroll");
+            $("#header-wrapper").removeClass("after-scroll").addClass("before-scroll");
             $(".nav li.selected").removeClass("selected");
-            fixedOn = $(".nav").offset().top;
-
+            if ($(window).width() < 800) {
+                fixedOn = $(window).height();
+            }
+            else {
+                fixedOn = $(".nav").offset().top;
+            }
         }
     });
 
@@ -161,14 +167,18 @@
 
     //Animate scroll to page section
     $(".nav a").click(function() {
+        var dest = $($(this).attr("href")).offset().top;
+        var distance = Math.abs(dest - $(window).scrollTop());
+        var scrollSpeed = distance/2.5;
         $('html, body').animate({
-            scrollTop: $($(this).attr("href")).offset().top
+            scrollTop: dest
         }, scrollSpeed, highlightMenuItem);
         return false;
     });
 
     //Scroll to top
     $('.logo').click(function() {
+        var scrollSpeed = $(window).scrollTop()/2.5;
         if ($(".selected").length) {
             $('html, body').animate({
                 scrollTop: 0
