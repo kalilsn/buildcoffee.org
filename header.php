@@ -9,23 +9,24 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+<?php $uri = get_template_directory_uri(); ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="assets/images/icons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="assets/images/icons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="assets/images/icons/manifest.json">
-    <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#000000">
-    <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
-    <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $uri ?>/assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="<?php echo $uri ?>/assets/images/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="<?php echo $uri ?>/assets/images/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="<?php echo $uri ?>/assets/images/icons/manifest.json">
+    <link rel="mask-icon" href="<?php echo $uri ?>/assets/images/icons/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="<?php echo $uri ?>/assets/images/icons/favicon.ico">
+    <meta name="msapplication-config" content="<?php echo $uri ?>/assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
 </head>
 
 <body>
 <!-- Preload background image -->
-<img src="assets/images/header-background-phone.jpg" srcset="assets/images/header-background-phone.jpg 768w, assets/images/header-background-tablet.jpg 1024w, assets/images/header-background-desktop.jpg 1920w, assets/images/header-background-large.jpg 2560w">
+<img class="hidden" src="<?php echo $uri ?>/assets/images/header-background-phone.jpg" srcset="<?php echo $uri ?>/assets/images/header-background-phone.jpg 768w, <?php echo $uri ?>/assets/images/header-background-tablet.jpg 1024w, <?php echo $uri ?>/assets/images/header-background-desktop.jpg 1920w, <?php echo $uri ?>/assets/images/header-background-large.jpg 2560w">
 <!--[if lt IE 9]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
