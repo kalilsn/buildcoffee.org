@@ -30,10 +30,12 @@
     }
 
     button {
+        display: none;
         border-radius: 10px;
         box-shadow: 0px 2px 8px #666;
         border-style: solid;
         background: white;
+        transition: all 250ms ease;
 
         @include phone {
             background: $link-color;
@@ -55,6 +57,7 @@
 }
 
 .contact-form-wrapper {
+    flex-flow: row wrap;
     display: flex;
     width: 100%;
     justify-content: flex-start;
@@ -66,6 +69,10 @@
     }
 }
 
+.error {
+    color: red;
+}
+
 .g-recaptcha {
     float: left;
 }
@@ -73,8 +80,4 @@
 form {
     width: 100%;
     margin: 0;
-}
-
-.unknown-error {
-    display: none;
 }

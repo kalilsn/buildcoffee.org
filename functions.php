@@ -126,3 +126,67 @@ function custom_excerpt_length($length) {
     return 15;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+
+//Contact form handler
+
+add_action('wp_ajax_send_contact_email', 'send_contact_email');
+add_action('wp_ajax_nopriv_send_contact_email', 'send_contact_email');
+
+function send_contact_email() {
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = str_replace(array("\r","\n"),array(" "," "), strip_tags(trim($_POST["name"])));
+        $email = !empty($_POST["email"]) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
+        $message = trim($_POST["message"]);
+
+        # Recaptcha verification
+        $content = [
+            'secret' => '6Lf1xQgUAAAAABRD04M61uerCod3xW9jp-RfKlgV',
+            'response' => $_POST['g-recaptcha-response'],
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ];
+
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+
+        $opts = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($content) 
+            ]
+        ];
+
+        $context = stream_context_create($opts);
+        $response = file_get_contents($url, false, $context);
+        $captcha = true; //json_decode($response)->success;
+
+        if (empty($name) OR 
+            empty($message) OR 
+            (!filter_var($email, FILTER_VALIDATE_EMAIL) and isset($email))
+            OR !$captcha) {
+
+            http_response_code(400);
+            echo "Looks like something wasn't quite right. Make sure you use a valid email address and fill in all the required fields!";
+        }
+
+
+        $to = "kalilsn@gmail.com";
+        $subject = "buildcoffee.org | Message from $name";
+
+        $email_headers = !empty($email) ? "Reply-to: $name <$email>" : "";
+
+        if (wp_mail($to, $subject, $message, $email_headers)) {
+            http_response_code(200);
+            echo "Thanks for getting in touch! We'll get back to you as soon as possible.";
+        } else {
+            http_response_code(500);
+            echo "Something went wrong. Please try again or send us an email.";
+        }
+
+    } else {
+        http_response_code(403);
+        echo "That's not what this is for.";
+    }
+    wp_die();
+}

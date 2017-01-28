@@ -226,44 +226,44 @@
  * AJAX contact form
  */
     
-    var responseDiv = $('#contact-form-response');
-    var contactForm = $('#contact-form');
-    var wrapper = $(contactForm).parent();
-    $(contactForm).submit(function(e) {
+    var responseDiv = $('.contact .response');
+    var contactForm = $('.contact form');
+    contactForm.submit(function(e) {
         e.preventDefault();
 
         var data = contactForm.serialize();
-        // console.log("data: ", data);
-        $(wrapper).addClass('waiting');
+        console.log("data: ", data);
+
         $.ajax({
             type: 'POST',
-            url: $(contactForm).attr('action'),
-            data: data
-        }).done(function(data) {
-            // console.log("success\n", data);
-            $(responseDiv).removeClass('error');
-            $(responseDiv).addClass('success');
-            $(wrapper).removeClass('waiting');
-            $(contactForm).hide();
-            $(responseDiv).text(data);
-        }).fail(function(data){
-            // console.log("fail\n", data);
-            $(wrapper).removeClass('waiting');
-            $(responseDiv).addClass('error');
-
-            var response = data.responseText;
-            if (response.responseText !== '') {
-                $(responseDiv).text(response);
-            } else {
-                $('#responseDiv > p.unknown-error').show();
-            }
+            url: contactForm.data('url'),
+            data: data,
+            error: onFormError,
+            success: onFormSuccess
         });
     });
+
+    function onFormSuccess(data) {
+            console.log("success\n", data);
+            responseDiv.removeClass('error');
+            contactForm.hide();
+            responseDiv.text(data);
+        }
+
+    function onFormError(data) {
+            responseDiv.addClass('error');
+            var response = data.responseText;
+            if (response.responseText !== '') {
+                responseDiv.text(response);
+            } else {
+                responseDiv.text("An error occurred. Please try again or send as an email.");
+            }
+    }
 
     //Google recaptcha setup
     function recaptchaCallback() {
         $('.g-recaptcha').hide();
-        $('.contact-form-wrapper button').show();
+        $('.contact button.submit').show();
     }
 
 /*

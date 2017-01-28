@@ -22,6 +22,7 @@
     <meta name="msapplication-config" content="<?php echo $uri ?>/assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
