@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify'],
+                tasks: ['jshint', 'uglify:dev'],
                 options: {
                    livereload: true
                 }
@@ -91,11 +91,29 @@ module.exports = function(grunt) {
 
         // uglify to concat, minify, and make source maps
         uglify: {
-            plugins: {
+            options: {
+                sourceMap: 'assets/js/plugins.js.map',
+                sourceMappingURL: 'plugins.js.map',
+                sourceMapPrefix: 2
+            },
+            dev: {
+                files: {
+                    'assets/js/plugins.min.js': [
+                        'assets/js/source/plugins.js',
+                        'assets/js/vendor/navigation.js',
+                        'assets/js/vendor/skip-link-focus-fix.js',
+                        'assets/js/vendor/readmore-js/readmore.js',
+                    ],
+                    'assets/js/main.min.js': [
+                        'assets/js/source/main.js'
+                    ]                 
+                }
+            },
+            dist: {
                 options: {
-                    sourceMap: 'assets/js/plugins.js.map',
-                    sourceMappingURL: 'plugins.js.map',
-                    sourceMapPrefix: 2
+                    compress: {
+                        drop_console: true
+                    }
                 },
                 files: {
                     'assets/js/plugins.min.js': [
@@ -103,21 +121,12 @@ module.exports = function(grunt) {
                         'assets/js/vendor/navigation.js',
                         'assets/js/vendor/skip-link-focus-fix.js',
                         'assets/js/vendor/readmore-js/readmore.js',
-                    ]
-                }
-            },
-            main: {
-                options: {
-                    sourceMap: 'assets/js/main.js.map',
-                    sourceMappingURL: 'main.js.map',
-                    sourceMapPrefix: 2
-                },
-                files: {
+                    ],
                     'assets/js/main.min.js': [
                         'assets/js/source/main.js'
-                    ]
+                    ]                 
                 }
-            }
+            },
         },
 
         // deploy via rsync
@@ -140,8 +149,8 @@ module.exports = function(grunt) {
 
     });
 
-    grunt.registerTask('deploy', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'rsync']);
+    grunt.registerTask('deploy', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'rsync']);
 
     // register task
-    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'watch']);    
+    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify:dev', 'watch']);    
 };
