@@ -134,18 +134,19 @@
 
         //Highlight current section in nav
         function highlightMenuItem() {
-            var location = $(window).scrollTop() + 40;
+            var location = $(window).scrollTop() + 45;
             var height = $(document).height();
             if (location < sectionHeights[0]) {
                 if (!itemIsSelected) {
-                    $("nav li:first-child>a").addClass("selected");
+                    $("nav li:first-child").addClass("selected");
                     itemIsSelected = true;
                     console.log("selected first item");
                 }
             }
-            for (var i=0; i<sectionHeights.length; i++) {
+            var numSections = sectionHeights.length;
+            for (var i=0; i<numSections; i++) {
                 if (location >= sectionHeights[i] && location < sectionHeights[i+1]) {
-                    var selected = $("nav>ul li:nth-child(" + (i+1) + ")>a");
+                    var selected = $("nav>ul li:nth-child(" + (i+1) + ")");
                     //If element is already selected, do nothing 
                     if (selected.hasClass("selected")) {
                         break;
@@ -165,7 +166,8 @@
         }
 
         $(window).scroll(function() {
-            if ($(window).scrollTop() > fixedOn) {
+            var location = $(window).scrollTop()+1;
+            if ( location > fixedOn) {
                 if (!scrolledDown) {
                     $("#header-wrapper").removeClass("before-scroll").addClass("after-scroll");
                     scrolledDown = true;
@@ -173,19 +175,19 @@
                 }
                 throttle(highlightMenuItem(), 250);
                 if (!$(".selected").length) {
-                    $("nav li:first-child>a").addClass("selected");
+                    $("nav li:first-child").addClass("selected");
                     console.log("scrollTop: ", $(window).scrollTop(), " fixedOn: ", fixedOn);
                 }
             }
 
-            else if ($(window).scrollTop() <= fixedOn) {
+            else if (location <= fixedOn) {
                 if (scrolledDown) {
                     $("#header-wrapper").removeClass("after-scroll").addClass("before-scroll");
                     scrolledDown = false;
                     console.log("scrolled up");
                 }
                 if (itemIsSelected) {
-                    $("nav li>a.selected").removeClass("selected");
+                    $("nav li.selected").removeClass("selected");
                     itemIsSelected = false;
                     console.log("cleared selections on scroll up");
                 }
@@ -260,11 +262,6 @@
             }
     }
 
-    //Google recaptcha setup
-    function recaptchaCallback() {
-        $('.g-recaptcha').hide();
-        $('.contact button.submit').show();
-    }
 
 /*
  * Readmore setup
@@ -286,3 +283,9 @@
     });
 
 })(jQuery);
+
+//Google recaptcha setup
+function recaptchaCallback() {
+    jQuery('.g-recaptcha').hide();
+    jQuery('.contact button[type="submit"]').show();
+}
