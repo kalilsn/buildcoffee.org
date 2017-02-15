@@ -159,7 +159,7 @@ function send_contact_email() {
 
         $context = stream_context_create($opts);
         $response = file_get_contents($url, false, $context);
-        $captcha = true; //json_decode($response)->success;
+        $captcha = json_decode($response)->success;
 
         if (empty($name) OR 
             empty($message) OR 
@@ -171,7 +171,7 @@ function send_contact_email() {
         }
 
 
-        $to = "kalilsn@gmail.com";
+        $to = "beamalsky@gmail.com, hannahnyhart@gmail.com";
         $subject = "buildcoffee.org | Message from $name";
 
         $email_headers = !empty($email) ? "Reply-to: $name <$email>" : "";
