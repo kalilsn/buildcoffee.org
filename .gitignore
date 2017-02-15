@@ -3,5 +3,6 @@ node_modules
 .sass-cache
 .idea
 *.map
-*.min*
-assets/styles/build/style.css
+plugins.min.js
+main.min.js
+assets/styles/build
