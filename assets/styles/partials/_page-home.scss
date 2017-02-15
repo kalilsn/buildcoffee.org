@@ -8,14 +8,13 @@ body.home {}
 
 .section {
     min-height: 100vh;
-    padding: 60px 0;
+    padding: 60px 20px;
     @include phone {
+        width: 100%;
         padding: 60px 20px;
     }
-    @include tablet {
-        padding: 60px 12.5%;
-    }
     margin: 0 auto;
+    width: 80%;
     max-width: $page-width;
     &:nth-child(2n) {
         // background: $page-background-even;    
@@ -71,21 +70,6 @@ body.home {}
     display: none;
 }
 
-.hover {
-    .st2 {
-        fill: #fff;
-        animation: none;
-    }
-    .st1 {
-        fill: #bbb;
-        animation: none;
-    }
-
-    #shadow {
-        display: inherit;
-    }
-}
-
 #shadow,.st1,.st2 {
     transition: 0.3s;
 }
@@ -116,7 +100,7 @@ body.home {}
 }
 
 
-@media (max-width: 800px) {
+@include bp-max(768px) {
     .header-wrapper.after-scroll {
         .nav {
             flex-wrap: wrap;
@@ -134,7 +118,7 @@ body.home {}
 
         .nav.open li {
             display: block;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.9);
             border-bottom: 1px solid #bbb;
 
             &:last-child {
@@ -143,7 +127,7 @@ body.home {}
 
             &:hover {
                 background-color: $nav-hover-background;
-            }            
+            }
         }
     }
     

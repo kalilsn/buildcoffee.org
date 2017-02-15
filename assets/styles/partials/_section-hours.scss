@@ -7,7 +7,9 @@
         padding-left: 0;
         padding-right: 0;
     }
-
+    h1,h2,h3,h4,h5,h6,p {
+        margin: inherit 20px;
+    }
     ul {
         font-size: 1.7em;
         @include phone {

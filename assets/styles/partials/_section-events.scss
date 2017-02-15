@@ -23,7 +23,7 @@
 .event-date {
     margin-top: 0;
     margin-bottom: 1em;
-    flex: 1 100%;
+    flex: 1 0 100%;
 }
 
 .event-title {
@@ -38,7 +38,7 @@
 }
 
 .event-thumbnail-container {
-    flex: 0 1 auto;
+    flex-basis: 150px;
     margin: 0 1em 1em 0;
     @include phone {
         display: none;
@@ -49,7 +49,10 @@
 }
 
 .event-info {
-    flex: 5 0px;
+    flex: 1;
+    @include phone {
+        flex: 1 1 100%;
+    }
 }
 
 .events-more {
