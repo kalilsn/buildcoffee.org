@@ -136,9 +136,9 @@ add_action('wp_ajax_nopriv_send_contact_email', 'send_contact_email');
 function send_contact_email() {
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = str_replace(array("\r","\n"),array(" "," "), strip_tags(trim($_POST["name"])));
+        $name = filter_var(preg_replace('/\s+/', ' ', trim($_POST["name"])), FILTER_SANITIZE_STRING);
         $email = !empty($_POST["email"]) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
-        $message = trim($_POST["message"]);
+        $message = filter_var(trim($_POST["message"]), FILTER_SANITIZE_STRING);
 
         # Recaptcha verification
         $content = [
@@ -172,7 +172,8 @@ function send_contact_email() {
 
 
         $to = "beamalsky@gmail.com, hannahnyhart@gmail.com";
-        $subject = "buildcoffee.org | Message from $name";
+        $subject = "buildcoffee.org | Contact form message from $name";
+        $message = "$message\n --$name <$email>";
 
         $email_headers = !empty($email) ? "Reply-to: $name <$email>" : "";
 
