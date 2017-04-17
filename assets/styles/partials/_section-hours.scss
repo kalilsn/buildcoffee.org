@@ -3,10 +3,6 @@
     @include phone {
         font-size: 1em;
     }
-    @include phone {
-        padding-left: 0;
-        padding-right: 0;
-    }
     h1,h2,h3,h4,h5,h6,p {
         margin: inherit 20px;
     }
@@ -17,7 +13,7 @@
         }
         margin-bottom: 3em;
     }
-    
+
     .day {
         margin-right: 1em;
     }

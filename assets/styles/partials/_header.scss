@@ -20,8 +20,9 @@
     align-content: center;
     flex-flow: row wrap;
     @include bp-max(1800) {
-        width: 90%;    
+        width: 90%;
     }
+    max-width: 90%;
 }
 .address-wrapper {
     display: flex;
@@ -88,7 +89,7 @@ nav {
     line-height: $nav-height;
     width: 100%;
 
-    li {        
+    li {
         text-align: center;
         flex-grow: 1;
         background: white;
@@ -143,7 +144,7 @@ nav {
     .address-wrapper {
         display: none;
     }
-    
+
     .logo-wrapper {
         margin-left: calc(6.25% - #{$nav-logo-height}/2);
         cursor: pointer;
@@ -175,19 +176,19 @@ nav {
         margin-right: 1em;
         height: $nav-height;
         margin-left: auto;
-        
+
         div {
             a {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                flex: 1; 
+                flex: 1;
                 margin: 0 .5em;
                 height: $nav-height;
             }
-         
+
             &:hover {
-                background: $nav-hover-background; 
+                background: $nav-hover-background;
                 transition: 0.3s;
             }
         }

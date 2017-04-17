@@ -10,15 +10,13 @@ body.home {}
     min-height: 100vh;
     padding: 60px 20px;
     @include phone {
+        min-height: 0;
         width: 100%;
         padding: 60px 20px;
     }
     margin: 0 auto;
     width: 80%;
     max-width: $page-width;
-    &:nth-child(2n) {
-        // background: $page-background-even;    
-    }
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +26,7 @@ body.home {}
     p {
         width: 100%;
     }
-    
+
     @include links();
 }
 
@@ -46,7 +44,7 @@ body.home {}
 .two-column.img-grid > div {
     width: 49%;
 
-} 
+}
 
 .three-column.img-grid > div {
     width: 32%;
@@ -130,7 +128,7 @@ body.home {}
             }
         }
     }
-    
+
 }
 
 @include bp-max(950px) {

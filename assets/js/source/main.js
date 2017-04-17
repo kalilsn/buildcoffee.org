@@ -1,6 +1,6 @@
 (function($) {
 /*
- * Debounce and throttle functions 
+ * Debounce and throttle functions
  */
 
     //From underscore
@@ -147,7 +147,7 @@
             for (var i=0; i<numSections; i++) {
                 if (location >= sectionHeights[i] && location < sectionHeights[i+1]) {
                     var selected = $("nav>ul li:nth-child(" + (i+1) + ")");
-                    //If element is already selected, do nothing 
+                    //If element is already selected, do nothing
                     if (selected.hasClass("selected")) {
                         break;
                     }
@@ -158,7 +158,7 @@
                         selected.addClass("selected");
                         console.log("selected new item");
                         itemIsSelected = true;
-                        break; 
+                        break;
                     }
 
                 }
@@ -191,7 +191,7 @@
                     itemIsSelected = false;
                     console.log("cleared selections on scroll up");
                 }
-                
+
                 if ($(window).width() < 800) {
                     fixedOn = $(window).height();
                 }
@@ -227,7 +227,7 @@
 /*
  * AJAX contact form
  */
-    
+
     var responseDiv = $('.contact .response');
     var contactForm = $('.contact form');
     contactForm.submit(function(e) {
