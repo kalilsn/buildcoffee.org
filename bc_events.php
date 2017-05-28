@@ -59,7 +59,7 @@ function bc_events_edit_columns($columns) {
 function bc_events_custom_columns($column) {
     global $post;
     $custom = get_post_custom();
-    
+
     switch($column) {
         //Show event date
         case "bc_col_ev_date":
@@ -115,9 +115,9 @@ function bc_events_meta() {
 
     //Default start/end times and dates
     if ($meta_sd == null) {
-        $meta_sd = time(); 
-        $meta_ed = $meta_sd; 
-        $meta_st = 0; 
+        $meta_sd = time();
+        $meta_ed = $meta_sd;
+        $meta_st = 0;
         $meta_et = 0;
     }
 
@@ -140,26 +140,26 @@ function bc_events_meta() {
             <li><label>End Time</label><input name="bc_events_endtime" value="<?php echo $clean_et; ?>" /></li>
         </ul>
     </div>
-    <?php 
+    <?php
 }
 
 
 //Save post after editing
 add_action ('save_post', 'save_bc_events');
- 
+
 function save_bc_events() {
- 
+
     global $post;
-     
+
     if (isset($_POST['bc-events-nonce']) && !wp_verify_nonce($_POST['bc-events-nonce'], 'bc-events-nonce')) {
         return $post->ID;
     }
-     
+
     //Verify user privileges
     if (!current_user_can('edit_post', $post->ID)){
         return $post->ID;
     }
-     
+
     //Update post
     if (!isset($_POST['bc_events_startdate'])) {
         return $post;
@@ -167,21 +167,21 @@ function save_bc_events() {
 
     $updatestartd = strtotime($_POST["bc_events_startdate"] . $_POST["bc_events_starttime"]);
     update_post_meta($post->ID, "bc_events_startdate", $updatestartd );
-     
+
     if (!isset($_POST["bc_events_enddate"])) {
         return $post;
     }
     $updateendd = strtotime ( $_POST["bc_events_enddate"] . $_POST["bc_events_endtime"]);
     update_post_meta($post->ID, "bc_events_enddate", $updateendd);
 
-    update_post_meta($post->ID, "bc_events_url", $_POST["bc_events_url"]); 
+    update_post_meta($post->ID, "bc_events_url", $_POST["bc_events_url"]);
 }
 
 //Customize update messages
 add_filter('post_updated_messages', 'events_updated_messages');
- 
+
 function events_updated_messages($messages) {
- 
+
     global $post, $post_ID;
 
     $messages['bc_events'] = array(
@@ -198,7 +198,7 @@ function events_updated_messages($messages) {
           date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
         10 => sprintf( 'Event draft updated. <a target="_blank" href="%s">Preview event</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
     );
-     
+
     return $messages;
 }
 
@@ -218,10 +218,10 @@ function events_scripts() {
     wp_enqueue_script('jquery-ui-datepicker');
     wp_enqueue_script('custom_script', get_bloginfo('template_url').'/bc-events-admin.js', array('jquery'));
 }
- 
+
 add_action( 'admin_print_styles-post.php', 'events_styles', 1000 );
 add_action( 'admin_print_styles-post-new.php', 'events_styles', 1000 );
- 
+
 add_action( 'admin_print_scripts-post.php', 'events_scripts', 1000 );
 add_action( 'admin_print_scripts-post-new.php', 'events_scripts', 1000 );
 ?>
