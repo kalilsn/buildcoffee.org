@@ -208,7 +208,7 @@ function events_styles() {
     if ('bc_events' != $post_type) {
         return;
     }
-    wp_enqueue_style('ui-datepicker', 'http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
+    wp_enqueue_style('ui-datepicker', 'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
 }
 
 function events_scripts() {
