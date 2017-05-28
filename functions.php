@@ -76,7 +76,7 @@ function mb_filter_yoast_seo_metabox() {
 //Convert all links in menu from eg. /about/ to /#about
 add_filter("nav_menu_link_attributes", "scrolling_nav_links", 10, 3);
 function scrolling_nav_links($atts, $item, $args) {
-    
+
     $anchor = '#' . end(explode("/", rtrim($atts['href'], '/')));
     $atts['href'] = $anchor;
     return $atts;
@@ -115,10 +115,10 @@ function customize_menus() {
 add_action( 'admin_menu', 'customize_menus' );
 
 //Image setup
-add_image_size( 'admin', '60', '60', false ); 
-add_image_size( 'medium_large', '1280', '1280', true ); 
-add_image_size( 'small', '300', '300', false ); 
-add_image_size( 'medium-small', '500', '500', false ); 
+add_image_size( 'admin', '60', '60', false );
+add_image_size( 'medium_large', '1280', '1280', true );
+add_image_size( 'small', '300', '300', false );
+add_image_size( 'medium-small', '500', '500', false );
 add_image_size("huge", '2560', '2560', false);
 
 //Lower excerpt length
@@ -134,7 +134,7 @@ add_action('wp_ajax_send_contact_email', 'send_contact_email');
 add_action('wp_ajax_nopriv_send_contact_email', 'send_contact_email');
 
 function send_contact_email() {
-    
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = filter_var(preg_replace('/\s+/', ' ', trim($_POST["name"])), FILTER_SANITIZE_STRING);
         $email = !empty($_POST["email"]) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
@@ -153,7 +153,7 @@ function send_contact_email() {
             'http' => [
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
                 'method'  => 'POST',
-                'content' => http_build_query($content) 
+                'content' => http_build_query($content)
             ]
         ];
 
@@ -161,8 +161,8 @@ function send_contact_email() {
         $response = file_get_contents($url, false, $context);
         $captcha = json_decode($response)->success;
 
-        if (empty($name) OR 
-            empty($message) OR 
+        if (empty($name) OR
+            empty($message) OR
             (!filter_var($email, FILTER_VALIDATE_EMAIL) and isset($email))
             OR !$captcha) {
 

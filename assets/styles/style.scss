@@ -24,9 +24,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import "partials/header";
 @import "partials/footer";
 
-// Menus, Page and Post styles
-@import "partials/page-post";
-
 // Page Templates
 @import "partials/page-home";
 @import "partials/section-contact";
@@ -36,9 +33,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 // Widgets, Search, Comments, Forms, Sharing
-@import "partials/widgets";
 @import "partials/forms";
 
 // Helper Classes, Print, Etc
 @import "partials/helpers";
-@import "partials/print";
