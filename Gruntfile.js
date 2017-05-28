@@ -152,14 +152,21 @@ module.exports = function(grunt) {
             production: {
                  options: {
                     dest: "/var/www/buildcoffee.org/wp-content/themes/buildcoffee",
-                    host: "root@45.55.186.139"
+                    host: "root@buildcoffee.org"
+                }
+            },
+            dev: {
+                options: {
+                    dest: "/var/www/dev.buildcoffee.org/wp-content/themes/buildcoffee",
+                    host: "root@buildcoffee.org"
                 }
             }
         }
 
     });
 
-    grunt.registerTask('deploy', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'rsync']);
+    grunt.registerTask('deploy', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'rsync:dev']);
+    grunt.registerTask('deploy-production', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'rsync:production']);
 
     // register task
     grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify:dev', 'watch']);
