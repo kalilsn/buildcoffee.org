@@ -106,7 +106,7 @@ module.exports = function(grunt) {
                     ],
                     'assets/js/main.min.js': [
                         'assets/js/source/main.js'
-                    ]                 
+                    ]
                 }
             },
             dist: {
@@ -124,9 +124,19 @@ module.exports = function(grunt) {
                     ],
                     'assets/js/main.min.js': [
                         'assets/js/source/main.js'
-                    ]                 
+                    ]
                 }
             },
+        },
+
+        phpcs: {
+            php: {
+                src: ['*.php', 'lib/**/*.php']
+            },
+            options: {
+                bin: 'wpcs/vendor/bin/phpcs',
+                standard: 'WordPress'
+            }
         },
 
         // deploy via rsync
@@ -152,5 +162,5 @@ module.exports = function(grunt) {
     grunt.registerTask('deploy', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'rsync']);
 
     // register task
-    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify:dev', 'watch']);    
+    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify:dev', 'watch']);
 };

@@ -10,6 +10,7 @@
     "grunt-contrib-sass": "~1.0.0",
     "grunt-contrib-uglify": "~2.0.0",
     "grunt-contrib-watch": "~1.0.0",
+    "grunt-phpcs": "^0.4.0",
     "grunt-rsync": "~2.0.1",
     "load-grunt-tasks": "~3.5.2"
   }
