@@ -144,7 +144,21 @@ module.exports = function(grunt) {
             options: {
                 src: "./",
                 args: ["--verbose"],
-                exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc'],
+                exclude: [
+                    '.git*',
+                    'node_modules',
+                    '.sass-cache',
+                    'Gruntfile.js',
+                    'package.json',
+                    '.DS_Store',
+                    'README.md',
+                    'config.rb',
+                    '.jshintrc',
+                    'wpcs',
+                    '.bowerrc',
+                    '.editorconfig',
+                    '.jshintrc',
+                ],
                 recursive: true,
                 syncDestIgnoreExcl: true,
                 ssh: true
