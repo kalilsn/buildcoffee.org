@@ -1,60 +1,4 @@
-.contact {
-    
-    input, textarea {
-        border: 2px solid #848484;
-        border-radius: 5px;
-        padding: 5px;
-        box-sizing: border-box;
-        margin-bottom: 1em;
-        &:focus {
-            border-color: #69c3ff;
-            outline: none;
-        }
-    }
-
-    input {
-        max-width: 250px;
-        width: 100%;
-    }
-
-    textarea {
-        display: block;
-        width: 650px;
-        height: 200px;
-        @include tablet {
-            width: 100%;
-        }
-        @include phone {
-            width: 100%;
-        }
-    }
-
-    button {
-        display: none;
-        border-radius: 10px;
-        box-shadow: 0px 2px 8px #666;
-        border-style: solid;
-        background: white;
-        transition: all 250ms ease;
-
-        @include phone {
-            background: $link-color;
-        }
-        
-        &:hover, &:active, &:focus {
-            background: $link-color;
-        }
-
-        &:active {
-            box-shadow: none;
-        }
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-}
+.contact {}
 
 .contact-form-wrapper {
     flex-flow: row wrap;
@@ -75,9 +19,4 @@
 
 .g-recaptcha {
     float: left;
-}
-
-form {
-    width: 100%;
-    margin: 0;
 }
