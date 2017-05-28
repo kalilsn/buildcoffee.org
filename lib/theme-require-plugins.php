@@ -5,39 +5,39 @@
  */
 function mb_register_required_plugins() {
 
-	$plugins = array(
+	$plugins = [
 
-		array(
+		[
 			'name' 				=> 'WordPress SEO by Yoast',
 			'slug' 				=> 'wordpress-seo',
 			'required' 			=> true,
-			'force_activation'	=> true
-		),
+			'force_activation'	=> true,
+		],
 
-		array(
+		[
 			'name' 				=> 'Custom Field Suite',
 			'slug' 				=> 'custom-field-suite',
 			'required' 			=> true,
-			'force_activation'	=> true
-		),
+			'force_activation'	=> true,
+		],
 
-        array(
-            'name'              => 'CCFS Options Screens',
-            'slug'              => 'cfs-options-screens',
-            'required'          => true,
-            'force_activation'  => true
-        ),
+		[
+			'name'              => 'CCFS Options Screens',
+			'slug'              => 'cfs-options-screens',
+			'required'          => true,
+			'force_activation'  => true,
+		],
 
-		array(
+		[
 			'name' 				=> 'Google Analytics for WordPress',
 			'slug' 				=> 'google-analytics-for-wordpress',
 			'required' 			=> true,
-			'force_activation'	=> true
-		),
+			'force_activation'	=> true,
+		],
 
-	);
+	];
 
-    /*
+	/*
      * Array of configuration settings. Amend each line as needed.
      *
      * TGMPA will start providing localized text strings soon. If you already have translations of our standard
@@ -46,19 +46,19 @@ function mb_register_required_plugins() {
      *
      * Only uncomment the strings in the config array if you want to customize the strings.
      */
-    $config = array(
-        'id'           => 'tgmpa',                 // Unique ID for hashing notices for multiple instances of TGMPA.
-        'default_path' => '',                      // Default absolute path to bundled plugins.
-        'menu'         => 'tgmpa-install-plugins', // Menu slug.
-        'parent_slug'  => 'themes.php',            // Parent menu slug.
-        'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-        'has_notices'  => true,                    // Show admin notices or not.
-        'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
-        'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-        'is_automatic' => false,                   // Automatically activate plugins after installation or not.
-        'message'      => '',                      // Message to output right before the plugins table.
+	$config = [
+		'id'           => 'tgmpa',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+		'default_path' => '',                      // Default absolute path to bundled plugins.
+		'menu'         => 'tgmpa-install-plugins', // Menu slug.
+		'parent_slug'  => 'themes.php',            // Parent menu slug.
+		'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
+		'has_notices'  => true,                    // Show admin notices or not.
+		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+		'message'      => '',                      // Message to output right before the plugins table.
 
-        /*
+		/*
         'strings'      => array(
             'page_title'                      => __( 'Install Required Plugins', 'theme-slug' ),
             'menu_title'                      => __( 'Install Plugins', 'theme-slug' ),
@@ -135,8 +135,8 @@ function mb_register_required_plugins() {
             'nag_type'                        => 'updated', // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
         ),
         */
-    );
+	];
 
-    tgmpa( $plugins, $config );
+	tgmpa( $plugins, $config );
 
 }
