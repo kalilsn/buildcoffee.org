@@ -7,6 +7,7 @@
 	<rule ref="WordPress-Core">
 		<exclude name="WordPress.WhiteSpace.OperatorSpacing"/>
 		<exclude name="WordPress.PHP.YodaConditions"/>
+		<exclude name="Squiz.Commenting.LongConditionClosingComment"/>
 	</rule>
 	<rule ref="WordPress-Extra"/>
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
