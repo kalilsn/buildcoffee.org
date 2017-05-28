@@ -74,42 +74,42 @@ function mb_filter_yoast_seo_metabox() {
 
 
 //Convert all links in menu from eg. /about/ to /#about
-add_filter("nav_menu_link_attributes", "scrolling_nav_links", 10, 3);
-function scrolling_nav_links($atts, $item, $args) {
+add_filter( 'nav_menu_link_attributes', 'scrolling_nav_links', 10, 3 );
+function scrolling_nav_links( $atts, $item, $args ) {
 
-    $anchor = '#' . end(explode("/", rtrim($atts['href'], '/')));
-    $atts['href'] = $anchor;
-    return $atts;
+	$anchor = '#' . end( explode( '/', rtrim( $atts['href'], '/' ) ) );
+	$atts['href'] = $anchor;
+	return $atts;
 }
 
 
 //Remove unnecessary classes and ids from nav menu
 // https://wordpress.stackexchange.com/questions/12784/wp-nav-menu-remove-class-and-id-from-li
-add_filter('nav_menu_item_id', 'clear_nav_menu_item_id', 10, 3);
-function clear_nav_menu_item_id($id, $item, $args) {
-    return "";
+add_filter( 'nav_menu_item_id', 'clear_nav_menu_item_id', 10, 3 );
+function clear_nav_menu_item_id( $id, $item, $args ) {
+	return '';
 }
 
-add_filter('nav_menu_css_class', 'clear_nav_menu_item_class', 10, 3);
-function clear_nav_menu_item_class($classes, $item, $args) {
-    return array();
+add_filter( 'nav_menu_css_class', 'clear_nav_menu_item_class', 10, 3 );
+function clear_nav_menu_item_class( $classes, $item, $args ) {
+	return [];
 }
 
 //Hide admin bar
-add_filter('show_admin_bar', '__return_false');
+add_filter( 'show_admin_bar', '__return_false' );
 
 require get_template_directory() . '/bc_events.php';
 
 //Hide/rename menu items
 function customize_menus() {
-    remove_menu_page( 'edit.php' ); //Posts
-    remove_menu_page( 'edit-comments.php' );//Comments
+	remove_menu_page( 'edit.php' ); //Posts
+	remove_menu_page( 'edit-comments.php' ); //Comments
 
-    global $menu;
-    global $submenu;
+	global $menu;
+	global $submenu;
 
-    $menu[20][0] = "Sections"; //Rename Pages
-    $submenu["edit.php?post_type=page"][5][0] = "Sections";
+	$menu[20][0] = 'Sections'; //Rename Pages
+	$submenu['edit.php?post_type=page'][5][0] = 'Sections';
 }
 
 add_action( 'admin_menu', 'customize_menus' );
@@ -119,75 +119,73 @@ add_image_size( 'admin', '60', '60', false );
 add_image_size( 'medium_large', '1280', '1280', true );
 add_image_size( 'small', '300', '300', false );
 add_image_size( 'medium-small', '500', '500', false );
-add_image_size("huge", '2560', '2560', false);
+add_image_size( 'huge', '2560', '2560', false );
 
 //Lower excerpt length
-function custom_excerpt_length($length) {
-    return 15;
+function custom_excerpt_length( $length ) {
+	return 15;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 
 //Contact form handler
 
-add_action('wp_ajax_send_contact_email', 'send_contact_email');
-add_action('wp_ajax_nopriv_send_contact_email', 'send_contact_email');
+add_action( 'wp_ajax_send_contact_email', 'send_contact_email' );
+add_action( 'wp_ajax_nopriv_send_contact_email', 'send_contact_email' );
 
 function send_contact_email() {
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = filter_var(preg_replace('/\s+/', ' ', trim($_POST["name"])), FILTER_SANITIZE_STRING);
-        $email = !empty($_POST["email"]) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
-        $message = filter_var(trim($_POST["message"]), FILTER_SANITIZE_STRING);
+	if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+		$name = filter_var( preg_replace( '/\s+/', ' ', trim( $_POST['name'] ) ), FILTER_SANITIZE_STRING );
+		$email = !empty( $_POST['email'] ) ? filter_var( trim( $_POST['email'] ), FILTER_SANITIZE_EMAIL ) : null;
+		$message = filter_var( trim( $_POST['message'] ), FILTER_SANITIZE_STRING );
 
-        # Recaptcha verification
-        $content = [
-            'secret' => '6Lf1xQgUAAAAABRD04M61uerCod3xW9jp-RfKlgV',
-            'response' => $_POST['g-recaptcha-response'],
-            'remoteip' => $_SERVER['REMOTE_ADDR']
-        ];
+		# Recaptcha verification
+		$content = [
+			'secret' => '6Lf1xQgUAAAAABRD04M61uerCod3xW9jp-RfKlgV',
+			'response' => $_POST['g-recaptcha-response'],
+			'remoteip' => $_SERVER['REMOTE_ADDR'],
+		];
 
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
+		$url = 'https://www.google.com/recaptcha/api/siteverify';
 
-        $opts = [
-            'http' => [
-                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method'  => 'POST',
-                'content' => http_build_query($content)
-            ]
-        ];
+		$opts = [
+			'http' => [
+				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method'  => 'POST',
+				'content' => http_build_query( $content ),
+			],
+		];
 
-        $context = stream_context_create($opts);
-        $response = file_get_contents($url, false, $context);
-        $captcha = json_decode($response)->success;
+		$context = stream_context_create( $opts );
+		$response = file_get_contents( $url, false, $context );
+		$captcha = json_decode( $response )->success;
 
-        if (empty($name) OR
-            empty($message) OR
-            (!filter_var($email, FILTER_VALIDATE_EMAIL) and isset($email))
-            OR !$captcha) {
+		if ( empty( $name ) or
+			empty( $message ) or
+			(!filter_var( $email, FILTER_VALIDATE_EMAIL ) and isset( $email ))
+			or !$captcha ) {
 
-            http_response_code(400);
-            echo "Looks like something wasn't quite right. Make sure you use a valid email address and fill in all the required fields!";
-        }
+			http_response_code( 400 );
+			echo "Looks like something wasn't quite right. Make sure you use a valid email address and fill in all the required fields!";
+		}
 
+		$to = 'beamalsky@gmail.com, hannahnyhart@gmail.com';
+		$subject = "buildcoffee.org | Contact form message from $name";
+		$message = "$message\n --$name <$email>";
 
-        $to = "beamalsky@gmail.com, hannahnyhart@gmail.com";
-        $subject = "buildcoffee.org | Contact form message from $name";
-        $message = "$message\n --$name <$email>";
+		$email_headers = !empty( $email ) ? "Reply-to: $name <$email>" : '';
 
-        $email_headers = !empty($email) ? "Reply-to: $name <$email>" : "";
-
-        if (wp_mail($to, $subject, $message, $email_headers)) {
-            http_response_code(200);
-            echo "Thanks for getting in touch! We'll get back to you as soon as possible.";
-        } else {
-            http_response_code(500);
-            echo "Something went wrong. Please try again or send us an email.";
-        }
-
-    } else {
-        http_response_code(403);
-        echo "That's not what this is for.";
-    }
-    wp_die();
+		if ( wp_mail( $to, $subject, $message, $email_headers ) ) {
+			http_response_code( 200 );
+			echo "Thanks for getting in touch! We'll get back to you as soon as possible.";
+		} else {
+			http_response_code( 500 );
+			echo 'Something went wrong. Please try again or send us an email.';
+		}
+	} else {
+		http_response_code( 403 );
+		echo "That's not what this is for.";
+	}
+	wp_die();
 }

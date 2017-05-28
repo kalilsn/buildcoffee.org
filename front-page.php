@@ -10,14 +10,21 @@
 get_header(); ?>
 
 <?php
-	$args = array("post_type" => "page", "orderby" => "menu_order", "order" => "ASC", "post_parent" => 0);
-	$query = new WP_Query($args);
-	while ($query->have_posts()) {
+	$args = [
+		'post_type' => 'page',
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+		'post_parent' => 0,
+	];
+	$query = new WP_Query( $args );
+	while ( $query->have_posts() ) {
 		$query->the_post();
-        the_post_thumbnail("huge", array("class" => "divider"));
-		get_template_part("section");
-        $query->reset_postdata();
+		the_post_thumbnail( 'huge', [
+			'class' => 'divider',
+		] );
+		get_template_part( 'section' );
+		$query->reset_postdata();
 	}
 ?>
-    
-<?php get_footer(); ?>
+
+	<?php get_footer();

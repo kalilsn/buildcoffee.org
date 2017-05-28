@@ -27,13 +27,13 @@ get_header(); ?>
 						<h2 class="widget-title"><?php _e( 'Most Used Categories', '_bctheme' ); ?></h2>
 						<ul>
 						<?php
-							wp_list_categories( array(
+							wp_list_categories( [
 								'orderby'    => 'count',
 								'order'      => 'DESC',
 								'show_count' => 1,
 								'title_li'   => '',
 								'number'     => 10,
-							) );
+							] );
 						?>
 						</ul>
 					</div><!-- .widget -->
