@@ -9,7 +9,7 @@
 ?>
 
 <footer>
-	<div class="credit">This site was created by Kalil Smith-Nuevelle and Bea Malsky<a href="wp-admin">.</a></div>
+	<div class="credit">This site was created by Kalil Smith-Nuevelle and Bea Malsky<a href="wp-admin" tabindex="-1">.</a></div>
 </footer>
 
 <?php wp_footer(); ?>
