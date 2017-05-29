@@ -46,7 +46,7 @@ if ( ! function_exists( '_bctheme_setup' ) ) :
 
 			// Register Widget Areas
 			// Function location: /lib/theme-functions.php
-			add_action( 'widgets_init', 'mb_widgets_init' );
+			add_action( 'widgets_init', 'bc_widgets_init' );
 
 			// Execute shortcodes in widgets
 			// add_filter('widget_text', 'do_shortcode');
@@ -73,20 +73,20 @@ if ( ! function_exists( '_bctheme_setup' ) ) :
 
 			// Remove Dashboard Meta Boxes
 			// Function location: /lib/theme-functions.php
-			add_action( 'wp_dashboard_setup', 'mb_remove_dashboard_widgets' );
+			add_action( 'wp_dashboard_setup', 'bc_remove_dashboard_widgets' );
 
 			// Change Admin Menu Order
 			// Function location: /lib/theme-functions.php
 			add_filter( 'custom_menu_order', '__return_true' );
-			add_filter( 'menu_order', 'mb_custom_menu_order' );
+			add_filter( 'menu_order', 'bc_custom_menu_order' );
 
 			// Hide Admin Areas that are not used
 			// Function location: /lib/theme-functions.php
-			add_action( 'admin_menu', 'mb_remove_menu_pages' );
+			add_action( 'admin_menu', 'bc_remove_menu_pages' );
 
 			// Remove default link for images
 			// Function location: /lib/theme-functions.php
-			add_action( 'admin_init', 'mb_imagelink_setup', 10 );
+			add_action( 'admin_init', 'bc_imagelink_setup', 10 );
 
 			// Enable support for HTML5 markup.
 			add_theme_support( 'html5', [
@@ -108,16 +108,16 @@ if ( ! function_exists( '_bctheme_setup' ) ) :
 
 			// Enqueue scripts
 			// Function location: /lib/theme-functions.php
-			add_action( 'wp_enqueue_scripts', 'mb_scripts' );
+			add_action( 'wp_enqueue_scripts', 'bc_scripts' );
 
 			// Remove Query Strings From Static Resources
 			// Function location: /lib/theme-functions.php
-			add_filter( 'script_loader_src', 'mb_remove_script_version', 15, 1 );
-			add_filter( 'style_loader_src', 'mb_remove_script_version', 15, 1 );
+			add_filter( 'script_loader_src', 'bc_remove_script_version', 15, 1 );
+			add_filter( 'style_loader_src', 'bc_remove_script_version', 15, 1 );
 
 			// Remove Read More Jump
 			// Function location: /lib/theme-functions.php
-			add_filter( 'the_content_more_link', 'mb_remove_more_jump_link' );
+			add_filter( 'the_content_more_link', 'bc_remove_more_jump_link' );
 
 	}
 endif; // _bctheme_setup

@@ -9,7 +9,7 @@
 /**
  * Register Widget Areas
  */
-function mb_widgets_init() {
+function bc_widgets_init() {
 	// Main Sidebar
 	register_sidebar( [
 		'name'          => __( 'Sidebar', '_bctheme' ),
@@ -25,7 +25,7 @@ function mb_widgets_init() {
 /**
  * Remove Dashboard Meta Boxes
  */
-function mb_remove_dashboard_widgets() {
+function bc_remove_dashboard_widgets() {
 	global $wp_meta_boxes;
 	// unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
 	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] );
@@ -40,8 +40,9 @@ function mb_remove_dashboard_widgets() {
 /**
  * Change Admin Menu Order
  */
-function mb_custom_menu_order( $menu_ord ) {
-	if ( !$menu_ord ) { return true;
+function bc_custom_menu_order( $menu_ord ) {
+	if ( !$menu_ord ) {
+		return true;
 	}
 	return [
 		// 'index.php', // Dashboard
@@ -65,14 +66,14 @@ function mb_custom_menu_order( $menu_ord ) {
 /**
  * Hide Admin Areas that are not used
  */
-function mb_remove_menu_pages() {
+function bc_remove_menu_pages() {
 	// remove_menu_page( 'link-manager.php' );
 }
 
 /**
  * Remove default link for images
  */
-function mb_imagelink_setup() {
+function bc_imagelink_setup() {
 	$image_set = get_option( 'image_default_link_type' );
 	if ( $image_set !== 'none' ) {
 		update_option( 'image_default_link_type', 'none' );
@@ -82,7 +83,7 @@ function mb_imagelink_setup() {
 /**
  * Enqueue scripts
  */
-function mb_scripts() {
+function bc_scripts() {
 	wp_enqueue_style( '_bctheme-style', get_stylesheet_uri() );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -99,7 +100,7 @@ function mb_scripts() {
 /**
  * Remove Query Strings From Static Resources
  */
-function mb_remove_script_version( $src ) {
+function bc_remove_script_version( $src ) {
 	$parts = explode( '?ver', $src );
 	return $parts[0];
 }
@@ -107,7 +108,7 @@ function mb_remove_script_version( $src ) {
 /**
  * Remove Read More Jump
  */
-function mb_remove_more_jump_link( $link ) {
+function bc_remove_more_jump_link( $link ) {
 	$offset = strpos( $link, '#more-' );
 	if ( $offset ) {
 		$end = strpos( $link, '"',$offset );

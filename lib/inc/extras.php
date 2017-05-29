@@ -60,7 +60,7 @@ function _bctheme_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-		$title .= " $sep " . sprintf( __( 'Page %s', '_bctheme' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( 'Page %s', '_bctheme', max( $paged, $page ) );
 	}
 
 	return $title;

@@ -116,7 +116,7 @@ function bc_events_meta() {
 	$time_format = get_option( 'time_format' );
 
 	//Default start/end times and dates
-	if ( $meta_sd == null ) {
+	if ( $meta_sd === null ) {
 		$meta_sd = time();
 		$meta_ed = $meta_sd;
 		$meta_st = 0;
@@ -184,21 +184,21 @@ add_filter( 'post_updated_messages', 'events_updated_messages' );
 
 function events_updated_messages( $messages ) {
 
-	global $post, $post_ID;
+	global $post, $post_id;
 
 	$messages['bc_events'] = [
 		0 => '', // Unused. Messages start at index 1.
-		1 => sprintf( 'Event updated. <a href="%s">View item</a>', esc_url( get_permalink( $post_ID ) ) ),
+		1 => sprintf( 'Event updated. <a href="%s">View item</a>', esc_url( get_permalink( $post_id ) ) ),
 		2 => 'Custom field updated.',
 		3 => 'Custom field deleted.',
 		4 => 'Event updated.',
 		5 => isset( $_GET['revision'] ) ? sprintf( 'Event restored to revision from %s', wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-		6 => sprintf( 'Event published. <a href="%s">View event</a>', esc_url( get_permalink( $post_ID ) ) ),
+		6 => sprintf( 'Event published. <a href="%s">View event</a>', esc_url( get_permalink( $post_id ) ) ),
 		7 => 'Event saved.',
-		8 => sprintf( 'Event submitted. <a target="_blank" href="%s">Preview event</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+		8 => sprintf( 'Event submitted. <a target="_blank" href="%s">Preview event</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_id ) ) ) ),
 		9 => sprintf( 'Event scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview event</a>',
-		date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
-		10 => sprintf( 'Event draft updated. <a target="_blank" href="%s">Preview event</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+		date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_id ) ) ),
+		10 => sprintf( 'Event draft updated. <a target="_blank" href="%s">Preview event</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_id ) ) ) ),
 	];
 
 	return $messages;
@@ -207,7 +207,7 @@ function events_updated_messages( $messages ) {
 
 function events_styles() {
 	global $post_type;
-	if ( 'bc_events' != $post_type ) {
+	if ( 'bc_events' !== $post_type ) {
 		return;
 	}
 	wp_enqueue_style( 'ui-datepicker', 'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css' );
@@ -215,7 +215,7 @@ function events_styles() {
 
 function events_scripts() {
 	global $post_type;
-	if ( 'bc_events' != $post_type ) {
+	if ( 'bc_events' !== $post_type ) {
 		return;
 	}
 	wp_enqueue_script( 'jquery-ui-datepicker' );

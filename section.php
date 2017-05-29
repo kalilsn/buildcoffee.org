@@ -5,12 +5,12 @@
  * @package _bctheme
  */
 ?>
-<?php $sectionName = get_post_field( 'post_name' ); ?>
-<div class="section <?php echo $sectionName ?>" id="<?php echo $sectionName; ?>">
+<?php $section_name = get_post_field( 'post_name' ); ?>
+<div class="section <?php echo $section_name ?>" id="<?php echo $section_name; ?>">
 	<?php
 		the_content();
-	if ( locate_template( 'section-' . $sectionName . '.php' ) != '' ) {
-		get_template_part( 'section', $sectionName );
+	if ( locate_template( 'section-' . $section_name . '.php' ) !== '' ) {
+		get_template_part( 'section', $section_name );
 	}
 	?>
 </div>

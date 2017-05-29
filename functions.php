@@ -12,53 +12,27 @@ Theme Setup
 /**
  * Theme initialization
  */
-require get_template_directory() . '/lib/init.php';
+require_once get_template_directory() . '/lib/init.php';
 
 /**
  * Custom theme functions definited in /lib/init.php
  */
-require get_template_directory() . '/lib/theme-functions.php';
+require_once get_template_directory() . '/lib/theme-functions.php';
 
 /**
  * Helper functions for use in other areas of the theme
  */
-require get_template_directory() . '/lib/theme-helpers.php';
-
-/**
- * Implement the Custom Header feature.
- */
-//require get_template_directory() . '/lib/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/lib/inc/template-tags.php';
+require_once get_template_directory() . '/lib/theme-helpers.php';
 
 /**
  * Custom functions that act independently of the theme templates.
  */
-require get_template_directory() . '/lib/inc/extras.php';
+require_once get_template_directory() . '/lib/inc/extras.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/lib/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/lib/inc/jetpack.php';
-
-
-/****************************************
-Require Plugins
-*****************************************/
-
-require get_template_directory() . '/lib/class-tgm-plugin-activation.php';
-require get_template_directory() . '/lib/theme-require-plugins.php';
-
-// add_action( 'tgmpa_register', 'mb_register_required_plugins' );
-
+require_once get_template_directory() . '/lib/inc/customizer.php';
 
 /****************************************
 Misc Theme Functions
@@ -67,8 +41,8 @@ Misc Theme Functions
 /**
  * Filter Yoast SEO Metabox Priority
  */
-add_filter( 'wpseo_metabox_prio', 'mb_filter_yoast_seo_metabox' );
-function mb_filter_yoast_seo_metabox() {
+add_filter( 'wpseo_metabox_prio', 'bc_filter_yoast_seo_metabox' );
+function bc_filter_yoast_seo_metabox() {
 	return 'low';
 }
 
@@ -98,7 +72,7 @@ function clear_nav_menu_item_class( $classes, $item, $args ) {
 //Hide admin bar
 add_filter( 'show_admin_bar', '__return_false' );
 
-require get_template_directory() . '/bc_events.php';
+require_once get_template_directory() . '/bc-events.php';
 
 //Hide/rename menu items
 function customize_menus() {
@@ -135,7 +109,7 @@ add_action( 'wp_ajax_nopriv_send_contact_email', 'send_contact_email' );
 
 function send_contact_email() {
 
-	if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+	if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 		$name = filter_var( preg_replace( '/\s+/', ' ', trim( $_POST['name'] ) ), FILTER_SANITIZE_STRING );
 		$email = !empty( $_POST['email'] ) ? filter_var( trim( $_POST['email'] ), FILTER_SANITIZE_EMAIL ) : null;
 		$message = filter_var( trim( $_POST['message'] ), FILTER_SANITIZE_STRING );
@@ -161,11 +135,11 @@ function send_contact_email() {
 		$response = file_get_contents( $url, false, $context );
 		$captcha = json_decode( $response )->success;
 
-		if ( empty( $name ) or
-			empty( $message ) or
-			(!filter_var( $email, FILTER_VALIDATE_EMAIL ) and isset( $email ))
-			or !$captcha ) {
-
+		if ( empty( $name )
+			|| empty( $message )
+			|| ( !filter_var( $email, FILTER_VALIDATE_EMAIL ) && isset( $email ) )
+			|| !$captcha
+		) {
 			http_response_code( 400 );
 			echo "Looks like something wasn't quite right. Make sure you use a valid email address and fill in all the required fields!";
 		}

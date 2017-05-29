@@ -10,7 +10,7 @@
  *
  * @return void
  */
-function mb_add_capabilities( $posttype ) {
+function bc_add_capabilities( $posttype ) {
 		// gets the author role
 		$role = get_role( 'administrator' );
 
