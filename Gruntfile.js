@@ -135,7 +135,9 @@ module.exports = function(grunt) {
             },
             options: {
                 bin: 'wpcs/vendor/bin/phpcs',
-                standard: 'WordPress'
+                standard: 'phpcs.xml',
+                extensions: 'php',
+                ignore: 'wpcs',
             }
         },
 
@@ -179,8 +181,8 @@ module.exports = function(grunt) {
 
     });
 
-    grunt.registerTask('deploy', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'rsync:dev']);
-    grunt.registerTask('deploy-production', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'rsync:production']);
+    grunt.registerTask('deploy', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'phpcs', 'rsync:dev']);
+    grunt.registerTask('deploy-production', ['sass', 'autoprefixer', 'cssmin', 'phpcs', 'uglify:dist', 'rsync:production']);
 
     // register task
     grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify:dev', 'watch']);
