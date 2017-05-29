@@ -9,6 +9,6 @@
 		<exclude name="WordPress.PHP.YodaConditions"/>
 		<exclude name="Squiz.Commenting.LongConditionClosingComment"/>
 	</rule>
-	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress.PHP.StrictComparisons" />
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 </ruleset>
