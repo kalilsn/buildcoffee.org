@@ -50,8 +50,7 @@ function bc_filter_yoast_seo_metabox() {
 //Convert all links in menu from eg. /about/ to /#about
 add_filter( 'nav_menu_link_attributes', 'scrolling_nav_links', 10, 3 );
 function scrolling_nav_links( $atts, $item, $args ) {
-
-	$anchor = '#' . array_pop( explode( '/', rtrim( $atts['href'], '/' ) ) );
+	$anchor = '#' . strtolower( $item->title );
 	$atts['href'] = $anchor;
 	return $atts;
 }
