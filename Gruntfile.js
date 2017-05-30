@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                 }
             },
             php: {
-                files: ['*.php'],
+                files: ['**/*.php'],
                 options: {
                     livereload: true
                 }
@@ -106,7 +106,7 @@ module.exports = function(grunt) {
                     ],
                     'assets/js/main.min.js': [
                         'assets/js/source/main.js'
-                    ]
+                    ],
                 }
             },
             dist: {
@@ -124,7 +124,7 @@ module.exports = function(grunt) {
                     ],
                     'assets/js/main.min.js': [
                         'assets/js/source/main.js'
-                    ]
+                    ],
                 }
             },
         },
