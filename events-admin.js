@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    $(".bcdate").datepicker({
+    $(".event-date").datepicker({
         dateFormat: 'D, M d, yy',
     });
 });
