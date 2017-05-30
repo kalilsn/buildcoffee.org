@@ -8,6 +8,8 @@
 		<exclude name="WordPress.WhiteSpace.OperatorSpacing"/>
 		<exclude name="WordPress.PHP.YodaConditions"/>
 		<exclude name="Squiz.Commenting.LongConditionClosingComment"/>
+		<exclude name="Squiz.PHP.DisallowMultipleAssignments"/>
+		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing" />
 	</rule>
 	<rule ref="WordPress.PHP.StrictComparisons" />
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
