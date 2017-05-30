@@ -131,7 +131,7 @@ function event_meta() {
 		<ul>
 			<li><label>External URL</label><input name="event_url" class="event-url" value="<?php echo esc_url( $url ); ?>" /></li>
 			<li><label>Start Date</label><input name="event_start_date" class="event-date" value="<?php echo $start_date; ?>" /></li>
-			<li><label>Start Time</label><input name="event_start_time" value="<?php echo $end_time; ?>" /></li>
+			<li><label>Start Time</label><input name="event_start_time" value="<?php echo $start_time; ?>" /></li>
 			<li><label>End Date</label><input name="event_end_date" class="event-date" value="<?php echo $end_date; ?>" /></li>
 			<li><label>End Time</label><input name="event_end_time" value="<?php echo $end_time; ?>" /></li>
 		</ul>

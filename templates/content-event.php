@@ -27,9 +27,11 @@ if ( !function_exists( 'permalink' ) ) {
 	}
 }
 
+$date = $start_date === $end_date ? $start_date : "$start_date &mdash; $end_date";
+
 ?>
 <div class="event">
-	<h3 class="event-date"><?php echo esc_html( $start_date ); ?></h3>
+	<h3 class="event-date"><?php echo esc_html( $date ); ?></h3>
 	<?php if ( has_post_thumbnail() ) { ?>
 		<div class="event-thumbnail-container">
 			<?php the_post_thumbnail( 'thumbnail', [
@@ -48,10 +50,14 @@ if ( !function_exists( 'permalink' ) ) {
 				] );
 				?>
 			</div>
-		<?php } ?>
-		<?php permalink( '<h4 class="event-title">' . get_the_title() . '</h4>', $permalink ); ?>
-		<h5 class="event-time"><?php echo esc_html( "$start_time &mdash; $end_time" ); ?></h5>
 		<?php
+		}
+		permalink( '<h4 class="event-title">' . get_the_title() . '</h4>', $permalink );
+		if ( $start_date === $end_date ) {
+			?>
+			<h5 class="event-time"><?php echo esc_html( "$start_time &mdash; $end_time" ); ?></h5>
+			<?php
+		}
 		the_content();
 		if ( !empty( $external_url ) ) {
 			?>
