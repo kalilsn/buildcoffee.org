@@ -16,7 +16,7 @@
     border-bottom: 2px dotted rgb(113, 113, 113);
 }
 
-.event:last-child {
+.event:last-of-type {
     border-bottom: none;
 }
 
@@ -29,6 +29,9 @@
 .event-title {
     margin-top: 0;
     margin-bottom: 0;
+    display: inline;
+    text-transform: none;
+    font-size: 1rem;
 }
 
 .event-time {
@@ -40,6 +43,7 @@
 .event-thumbnail-container {
     flex-basis: 150px;
     margin: 0 1em 1em 0;
+    text-align: center;
     @include phone {
         display: none;
     }
@@ -50,6 +54,7 @@
 
 .event-info {
     flex: 1;
+
     @include phone {
         flex: 1 1 100%;
     }
@@ -67,5 +72,20 @@
 
 .events-more {
     display: inline-block;
-    @include links()
+}
+
+.permalink {
+    margin-top: 0.5em;
+    text-transform: uppercase;
+    font-size: 0.6em;
+}
+
+.permalink.mobile {
+    display: none;
+}
+
+@include bp-max($tablet-width) {
+    .permalink.mobile {
+        display: initial;
+    }
 }

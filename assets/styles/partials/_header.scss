@@ -123,6 +123,7 @@ nav {
         font-weight: $nav-font-weight;
         display: block;
         width: 100%;
+        background: initial;
     }
 }
 
@@ -185,6 +186,7 @@ nav {
                 flex: 1;
                 margin: 0 .5em;
                 height: $nav-height;
+                background: initial;
             }
 
             &:hover {

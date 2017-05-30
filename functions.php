@@ -51,7 +51,7 @@ function bc_filter_yoast_seo_metabox() {
 add_filter( 'nav_menu_link_attributes', 'scrolling_nav_links', 10, 3 );
 function scrolling_nav_links( $atts, $item, $args ) {
 
-	$anchor = '#' . end( explode( '/', rtrim( $atts['href'], '/' ) ) );
+	$anchor = '#' . array_pop( explode( '/', rtrim( $atts['href'], '/' ) ) );
 	$atts['href'] = $anchor;
 	return $atts;
 }
@@ -72,7 +72,7 @@ function clear_nav_menu_item_class( $classes, $item, $args ) {
 //Hide admin bar
 add_filter( 'show_admin_bar', '__return_false' );
 
-require_once get_template_directory() . '/bc-events.php';
+require_once get_template_directory() . '/events.php';
 
 //Hide/rename menu items
 function customize_menus() {
@@ -163,3 +163,8 @@ function send_contact_email() {
 	}
 	wp_die();
 }
+
+function add_tags_to_attachments() {
+	register_taxonomy_for_object_type( 'post_tag', 'attachment' );
+}
+add_action( 'init' , 'add_tags_to_attachments' );

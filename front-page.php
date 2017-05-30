@@ -7,7 +7,7 @@
  * @package _bctheme
  */
 
-get_header(); ?>
+get_header( 'home' ); ?>
 
 <?php
 	$args = [
