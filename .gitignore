@@ -7,3 +7,5 @@ plugins.min.js
 main.min.js
 assets/styles/build
 style.css
+*.compiled.js
+assets/js/vendor/jquery

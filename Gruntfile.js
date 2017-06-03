@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify:dev'],
+                tasks: ['jshint', 'babel', 'uglify:dev'],
                 options: {
                    livereload: true
                 }
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                 }
             },
             php: {
-                files: ['**/*.php'],
+                files: ['**/*.php', '!wpcs/**'],
                 options: {
                     livereload: true
                 }
@@ -64,7 +64,25 @@ module.exports = function(grunt) {
             },
         },
 
-        // css minify
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['es2015'],
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    src: ['assets/js/source/*.js', '!assets/js/source/*.compiled.js'],
+                    ext: '.compiled.js',
+                }],
+            },
+        },
+
+        clean: {
+            js: ['**/*.compiled.js'],
+            css: ['**/*.css.map', 'assets/styles/build/*.css'],
+        },
+
         cssmin: {
             options: {
                 keepSpecialComments: 1
@@ -81,11 +99,12 @@ module.exports = function(grunt) {
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
-                "force": true
+                'force': true
             },
             all: [
                 'Gruntfile.js',
-                'assets/js/source/**/*.js'
+                'assets/js/source/*.js',
+                '!assets/js/source/*.compiled.js',
             ]
         },
 
@@ -94,20 +113,19 @@ module.exports = function(grunt) {
             options: {
                 sourceMap: 'assets/js/plugins.js.map',
                 sourceMappingURL: 'plugins.js.map',
-                sourceMapPrefix: 2
+                sourceMapPrefix: 2,
+                report: 'gzip',
             },
             dev: {
                 files: {
                     'assets/js/plugins.min.js': [
-                        'assets/js/source/plugins.js',
-                        'assets/js/vendor/navigation.js',
-                        'assets/js/vendor/skip-link-focus-fix.js',
-                        'assets/js/vendor/readmore-js/readmore.js',
+                        'assets/js/vendor/jquery/dist/jquery.min.js',
+                        'assets/js/vendor/*.js',
                     ],
                     'assets/js/main.min.js': [
-                        'assets/js/source/main.js'
+                        'assets/js/source/*.compiled.js',
                     ],
-                }
+                },
             },
             dist: {
                 options: {
@@ -117,15 +135,13 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'assets/js/plugins.min.js': [
-                        'assets/js/source/plugins.js',
-                        'assets/js/vendor/navigation.js',
-                        'assets/js/vendor/skip-link-focus-fix.js',
-                        'assets/js/vendor/readmore-js/readmore.js',
+                        'assets/js/vendor/jquery/dist/jquery.min.js',
+                        'assets/js/vendor/*.js',
                     ],
                     'assets/js/main.min.js': [
-                        'assets/js/source/main.js'
+                        'assets/js/source/*.compiled.js',
                     ],
-                }
+                },
             },
         },
 
@@ -144,8 +160,8 @@ module.exports = function(grunt) {
         // deploy via rsync
         rsync: {
             options: {
-                src: "./",
-                args: ["--verbose"],
+                src: './',
+                args: ['--verbose',],
                 exclude: [
                     '.git*',
                     'node_modules',
@@ -161,29 +177,30 @@ module.exports = function(grunt) {
                     '.editorconfig',
                     '.jshintrc',
                 ],
+                delete: true,
                 recursive: true,
-                syncDestIgnoreExcl: true,
                 ssh: true
             },
             production: {
                  options: {
-                    dest: "/var/www/buildcoffee.org/wp-content/themes/buildcoffee",
-                    host: "root@buildcoffee.org"
+                    dest: '/var/www/buildcoffee.org/wp-content/themes/buildcoffee',
+                    host: 'root@buildcoffee.org'
                 }
             },
             dev: {
                 options: {
-                    dest: "/var/www/dev.buildcoffee.org/wp-content/themes/buildcoffee",
-                    host: "root@buildcoffee.org"
+                    dest: '/var/www/dev.buildcoffee.org/wp-content/themes/buildcoffee',
+                    host: 'root@buildcoffee.org'
                 }
             }
         }
 
     });
 
-    grunt.registerTask('deploy', ['sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'phpcs', 'rsync:dev']);
-    grunt.registerTask('deploy-production', ['sass', 'autoprefixer', 'cssmin', 'phpcs', 'uglify:dist', 'rsync:production']);
+    grunt.registerTask('build', ['clean', 'sass', 'autoprefixer', 'cssmin', 'babel', 'uglify:dist', 'phpcs']);
+    grunt.registerTask('deploy', ['build', 'rsync:dev']);
+    grunt.registerTask('deploy-production', ['build', 'rsync:production']);
 
     // register task
-    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify:dev', 'watch']);
+    grunt.registerTask('default', ['clean', 'sass', 'autoprefixer', 'cssmin', 'babel', 'uglify:dev', 'watch']);
 };

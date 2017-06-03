@@ -16,8 +16,8 @@
     "curly": true,
     "supernew": true,
     "globals": {
-        "Backbone": true,
-        "_": true,
+        "throttle": true,
+        "debounce": true,
         "jQuery": true
     }
 }
