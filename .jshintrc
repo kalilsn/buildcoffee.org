@@ -17,6 +17,7 @@
     "supernew": true,
     "laxcomma": true,
     "globals": {
+        "WebFontConfig": true,
         "throttle": true,
         "debounce": true,
         "jQuery": true,
