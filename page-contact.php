@@ -4,6 +4,7 @@
  *
  * @package _bctheme
  */
+the_content();
 ?>
 <div class="contact-form-wrapper">
 	<div class="response"></div>

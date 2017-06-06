@@ -37,6 +37,7 @@ function create_event_post_type() {
 		],
 		'supports' => [ 'title', 'thumbnail', 'excerpt', 'editor' ],
 		'taxonomies' => [ 'post_tag' ],
+		'has_archive' => true,
 	];
 
 	register_post_type( 'event', $args );

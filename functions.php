@@ -81,8 +81,6 @@ function customize_menus() {
 	global $menu;
 	global $submenu;
 
-	$menu[20][0] = 'Sections'; //Rename Pages
-	$submenu['edit.php?post_type=page'][5][0] = 'Sections';
 }
 
 add_action( 'admin_menu', 'customize_menus' );

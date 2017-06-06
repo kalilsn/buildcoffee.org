@@ -4,7 +4,7 @@
  *
  * @package _bctheme
  */
-
+	the_content();
 	$args = [
 		'post_type' => 'event',
 		'orderby' => 'meta_value_num',
@@ -18,10 +18,10 @@
 			'compare' => '>=',
 		],
 	];
-	$query = new WP_Query( $args );
-	if ( $query->have_posts() ) {
-		while ( $query->have_posts() ) {
-			$query->the_post();
+	$events_query = new WP_Query( $args );
+	if ( $events_query->have_posts() ) {
+		while ( $events_query->have_posts() ) {
+			$events_query->the_post();
 			get_template_part( 'templates/content', 'event' );
 		}
 	} else {
