@@ -19,6 +19,7 @@
     "globals": {
         "throttle": true,
         "debounce": true,
-        "jQuery": true
+        "jQuery": true,
+        "WebFont": true
     }
 }
