@@ -149,7 +149,7 @@ function save_event() {
 
 	global $post;
 	$nonce_id = 'event-nonce-' . $post->ID;
-	if ( !isset( $_POST[ 'event-nonce' ] ) || !wp_verify_nonce( $_POST[ 'event-nonce' ], $nonce_id ) ) {
+	if ( !isset( $_POST['event-nonce'] ) || !wp_verify_nonce( $_POST['event-nonce'], $nonce_id ) ) {
 		return $post->ID;
 	}
 
