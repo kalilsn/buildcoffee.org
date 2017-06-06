@@ -15,6 +15,7 @@
     "jquery": true,
     "curly": true,
     "supernew": true,
+    "laxcomma": true,
     "globals": {
         "throttle": true,
         "debounce": true,
