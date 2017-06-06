@@ -165,3 +165,11 @@ function add_tags_to_attachments() {
 	register_taxonomy_for_object_type( 'post_tag', 'attachment' );
 }
 add_action( 'init' , 'add_tags_to_attachments' );
+
+function deregister_scripts() {
+	wp_deregister_script( 'wp-embed' );
+}
+add_action( 'wp_footer', 'deregister_scripts' );
+
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
