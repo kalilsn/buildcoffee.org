@@ -211,7 +211,7 @@ function event_styles() {
 
 function event_scripts() {
 	global $post_type;
-	if ( $post_type !== 'event' ) {
+	if ( $post_type !== 'event' || !is_admin() ) {
 		return;
 	}
 	wp_enqueue_script( 'jquery-ui-datepicker' );
