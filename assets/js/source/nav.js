@@ -42,7 +42,7 @@ var nav = (function() {
     };
 
     var onScroll = function() {
-        var location = $window.scrollTop() + 1
+        var location = $window.scrollTop()
           , scrolled = location > fixedOn
         ;
 
@@ -62,6 +62,8 @@ var nav = (function() {
     var onLoad = function() {
         docHeight = $document.height();
         loaded = true;
+        $navItems.on('click.scrollTo', onNavItemClick);
+        $logo.click(scrollToTop);
         getSectionHeights();
         bindScroll();
         $window.trigger('resize');
@@ -112,7 +114,7 @@ var nav = (function() {
         sectionHeights = $sections.map(function() {
             return $(this).offset().top;
         });
-        sectionHeights.push(docHeight+1);
+        sectionHeights.push(docHeight);
     };
 
     var highlightMenuItem = function() {
@@ -153,8 +155,6 @@ var nav = (function() {
     var init = function() {
         $window.on('resize', debounce(onResize, 250));
         $window.on('load', onLoad);
-        $navItems.on('click.scrollTo', onNavItemClick);
-        $logo.click(scrollToTop);
     };
 
     return {
