@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'babel', 'uglify:dev'],
+                tasks: ['jshint', 'uglify:dev'],
                 options: {
                    livereload: true
                 }
@@ -64,23 +64,10 @@ module.exports = function(grunt) {
             },
         },
 
-        babel: {
-            options: {
-                sourceMap: true,
-                presets: ['es2015'],
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    src: ['assets/js/source/*.js', '!assets/js/source/*.compiled.js'],
-                    ext: '.compiled.js',
-                }],
-            },
-        },
-
         clean: {
-            js: ['**/*.compiled.js'],
-            css: ['**/*.css.map', 'assets/styles/build/*.css'],
+            sourceMap: ['**/*.map'],
+            js: ['assets/js/*.min.js'],
+            css: ['**/*.min.css', 'assets/styles/build/*.css'],
         },
 
         cssmin: {
@@ -104,26 +91,25 @@ module.exports = function(grunt) {
             all: [
                 'Gruntfile.js',
                 'assets/js/source/*.js',
-                '!assets/js/source/*.compiled.js',
             ]
         },
 
         // uglify to concat, minify, and make source maps
         uglify: {
             options: {
-                sourceMap: 'assets/js/plugins.js.map',
-                sourceMappingURL: 'plugins.js.map',
-                sourceMapPrefix: 2,
                 report: 'gzip',
             },
             dev: {
+                options: {
+                    sourceMap: true,
+                },
                 files: {
                     'assets/js/plugins.min.js': [
                         'assets/js/vendor/jquery/dist/jquery.min.js',
                         'assets/js/vendor/*.js',
                     ],
                     'assets/js/main.min.js': [
-                        'assets/js/source/*.compiled.js',
+                        'assets/js/source/*.js',
                     ],
                 },
             },
@@ -139,7 +125,7 @@ module.exports = function(grunt) {
                         'assets/js/vendor/*.js',
                     ],
                     'assets/js/main.min.js': [
-                        'assets/js/source/*.compiled.js',
+                        'assets/js/source/*.js',
                     ],
                 },
             },
@@ -197,10 +183,10 @@ module.exports = function(grunt) {
 
     });
 
-    grunt.registerTask('build', ['clean', 'sass', 'autoprefixer', 'cssmin', 'babel', 'uglify:dist', 'phpcs']);
+    grunt.registerTask('build', ['clean', 'jshint', 'sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'phpcs']);
     grunt.registerTask('deploy', ['build', 'rsync:dev']);
     grunt.registerTask('deploy-production', ['build', 'rsync:production']);
 
     // register task
-    grunt.registerTask('default', ['clean', 'sass', 'autoprefixer', 'cssmin', 'babel', 'uglify:dev', 'watch']);
+    grunt.registerTask('default', ['clean', 'jshint', 'sass', 'autoprefixer', 'cssmin', 'uglify:dev', 'watch']);
 };
