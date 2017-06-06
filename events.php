@@ -50,7 +50,7 @@ add_action( 'manage_posts_custom_column', 'events_custom_columns' );
 function events_edit_columns( $columns ) {
 	$columns = [
 		'cb' => '<input type="checkbox" />',
-		'date' => 'Date',
+		'event_date' => 'Date',
 		'time' => 'Time',
 		'thumbnail' => 'Thumbnail',
 		'title' => 'Event',
@@ -67,10 +67,10 @@ function events_custom_columns( $column ) {
 
 	switch ( $column ) {
 		//Show event date
-		case 'date':
+		case 'event_date':
 			$start_date = date( 'F j, Y', $meta['event_start_time'][0] );
 			$end_date = date( 'F j, Y', $meta['event_end_time'][0] );
-			echo $start_date . '<br /><em>' . $end_date . '</em>';
+			echo $start_date . ( $end_date  === $start_date ? '' : " &mdash; $end_date" );
 		break;
 
 		//Show event time
