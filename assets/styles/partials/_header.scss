@@ -7,11 +7,16 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-size: cover;
-    @include large { background-image: url("assets/images/header-background-large.jpg") }
-    @include desktop { background-image: url("assets/images/header-background-desktop.jpg") }
-    @include tablet { background-image: url("assets/images/header-background-tablet.jpg") }
-    @include phone { background-image: url("assets/images/header-background-phone.jpg") }
+    overflow: hidden;
+    position: relative;
+
+    .background-container {
+        transform: translateX(0%); //Ensures that fixed background image child affixes here
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        z-index: -1;
+    }
 }
 
 .header-wrapper {
@@ -150,6 +155,18 @@ nav {
         margin-left: calc(6.25% - #{$nav-logo-height}/2);
         cursor: pointer;
         z-index: 2;
+
+        &:hover {
+            #shadow {
+                display: none;
+            }
+            .st1 {
+                animation: multicolor-dark 6s infinite;
+            }
+            .st2 {
+                animation: multicolor-light 6s infinite;
+            }
+        }
     }
     .logo {
         height: $nav-logo-height;
@@ -169,6 +186,9 @@ nav {
 
         &.open {
             box-shadow: 0 0 20px 5px black;
+            @include bp-min($tablet-width) {
+                box-shadow: none;
+            }
         }
     }
 
@@ -203,17 +223,5 @@ nav {
     .st1,.st2 {
         fill: #000;
         animation: none;
-    }
-
-    .hover {
-        #shadow {
-            display: none;
-        }
-        .st1 {
-            animation: multicolor-dark 6s infinite;
-        }
-        .st2 {
-            animation: multicolor-light 6s infinite;
-        }
     }
 }

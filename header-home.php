@@ -24,13 +24,14 @@
 </head>
 
 <body>
-<!-- Preload background image -->
-<img class="hidden" src="<?php echo $base_url ?>/assets/images/header-background-phone.jpg" srcset="<?php echo $base_url ?>/assets/images/header-background-phone.jpg 768w, <?php echo $base_url ?>/assets/images/header-background-tablet.jpg 1024w, <?php echo $base_url ?>/assets/images/header-background-desktop.jpg 1920w, <?php echo $base_url ?>/assets/images/header-background-large.jpg 2560w">
 <!--[if lt IE 9]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <header class="landing page">
+	<div class="background-container">
+		<img class="background" src="<?php echo $base_url ?>/assets/images/header-background-phone.jpg" srcset="<?php echo $base_url ?>/assets/images/header-background-phone.jpg 768w, <?php echo $base_url ?>/assets/images/header-background-tablet.jpg 1024w, <?php echo $base_url ?>/assets/images/header-background-desktop.jpg 1920w, <?php echo $base_url ?>/assets/images/header-background-large.jpg 2560w">
+	</div>
 	<div id="header-wrapper" class="header-wrapper before-scroll">
 		<div class="logo-wrapper">
 			<svg class="logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 208.3 210.4" style="enable-background:new 0 0 208.3 210.4;" xml:space="preserve">
