@@ -16,14 +16,14 @@ get_header( 'home' ); ?>
 		'order' => 'ASC',
 		'post_parent' => 0,
 	];
-	$query = new WP_Query( $args );
-	while ( $query->have_posts() ) {
-		$query->the_post();
+	$home_query = new WP_Query( $args );
+	while ( $home_query->have_posts() ) {
+		$home_query->the_post();
 		the_post_thumbnail( 'huge', [
 			'class' => 'divider',
 		] );
-		get_template_part( 'section' );
-		$query->reset_postdata();
+		get_template_part( 'page' );
+		$home_query->reset_postdata();
 	}
 ?>
 
