@@ -17,7 +17,7 @@ $end_time = date( $format, $meta['event_end_time'][0] );
 if ( !function_exists( 'permalink' ) ) {
 	function permalink($contents, $permalink, $mobile=false) {
 		$mobile = $mobile ? 'mobile' : '';
-		if ( is_home() ) {
+		if ( !is_single() ) {
 			?>
 			<a class="permalink alternate-link <?php echo $mobile; ?>" href="<?php echo esc_url( $permalink ); ?>"><?php echo $contents ?></a>
 			<?php
