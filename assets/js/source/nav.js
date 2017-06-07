@@ -52,7 +52,7 @@ var nav = (function() {
         }
         if (scrolled && loaded) {
             highlightMenuItem();
-        } else if (itemIsSelected) {
+        } else if (itemIsSelected && $currentlySelected && $currentlySelected.length !== 0) {
             $currentlySelected.closest('li').removeClass(selectedClass);
             itemIsSelected = false;
         }
@@ -133,7 +133,7 @@ var nav = (function() {
                 }
                 // Otherwise remove class from other element and add to new one
                 else {
-                    if (itemIsSelected) {
+                    if ($currentlySelected && $currentlySelected.length) {
                         $currentlySelected.closest('li').removeClass(selectedClass);
                     }
                     $selected.closest('li').addClass(selectedClass);
