@@ -87,10 +87,17 @@ add_action( 'admin_menu', 'customize_menus' );
 
 //Image setup
 add_image_size( 'admin', '60', '60', false );
-add_image_size( 'medium_large', '1280', '1280', true );
 add_image_size( 'small', '300', '300', false );
 add_image_size( 'medium-small', '500', '500', false );
+add_image_size( 'medium-ish', '1024', '1024', false );
+add_image_size( 'medium-large', '1280', '1280', false );
 add_image_size( 'huge', '2560', '2560', false );
+
+function increase_max_srcset_image_width( $max_width ) {
+	return 2560;
+}
+
+add_filter( 'max_srcset_image_width', 'increase_max_srcset_image_width' );
 
 //Lower excerpt length
 function custom_excerpt_length( $length ) {
