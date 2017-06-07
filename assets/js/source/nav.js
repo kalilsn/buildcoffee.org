@@ -27,8 +27,7 @@ var nav = (function() {
       , itemIsSelected = false
       , mobileNavOpen = false
       , numSections = $sections.length
-      , fixedOn = $window.height()
-      , navIsFixed = $nav.offset().top || $window.height() // Use height of window if offset is 0 (ie. already scrolled)
+      , fixedOn = $nav.offset().top || $window.height() // Use height of window if offset is 0 (ie. already scrolled)
       , $logo = $('.logo')
       , isScrolled = false
       , isMobile
