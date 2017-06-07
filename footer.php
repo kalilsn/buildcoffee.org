@@ -13,6 +13,7 @@
 </footer>
 
 <?php wp_footer(); ?>
-
+<script src='/assets/js/vendor/webfontsloader/webfontsloader.min.js' async defer></script>
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
 </body>
 </html>
