@@ -37,7 +37,7 @@ var nav = (function() {
     ;
 
     var bindScroll = function() {
-        $window.on('scroll', throttle(onScroll, 150));
+        $window.on('scroll.nav', throttle(onScroll, 150));
     };
 
     var onScroll = function() {
@@ -50,7 +50,7 @@ var nav = (function() {
             $navWrapper.toggleClass('after-scroll', scrolled)
                 .toggleClass('before-scroll', !scrolled);
         }
-        if (scrolled) {
+        if (scrolled && loaded) {
             highlightMenuItem();
         } else if (itemIsSelected) {
             $currentlySelected.closest('li').removeClass(selectedClass);
@@ -64,7 +64,6 @@ var nav = (function() {
         $navItems.on('click.scrollTo', onNavItemClick);
         $logo.click(scrollToTop);
         getSectionHeights();
-        bindScroll();
         $window.trigger('resize');
         $window.trigger('scroll');
     };
@@ -82,7 +81,7 @@ var nav = (function() {
             var dest = $(ev.target.hash).offset().top
               , time = Math.abs(dest - $window.scrollTop()) / scrollSpeed;
             if (!isScrolled) {
-                $window.off('scroll');
+                $window.off('scroll.nav');
             }
             $body.animate({
                 scrollTop: dest
@@ -154,6 +153,7 @@ var nav = (function() {
     var init = function() {
         $window.on('resize', debounce(onResize, 250));
         $window.on('load', onLoad);
+        bindScroll();
     };
 
     return {
