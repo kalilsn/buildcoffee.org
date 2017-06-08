@@ -9,7 +9,7 @@
 ?>
 
 <footer <?php echo is_home() ? '' : 'class="footer-alternate"'; ?>>
-	<div class="credit">This site was created by Kalil Smith-Nuevelle and Bea Malsky. Photos by <a href="alexjungtcs.com">Alex Jung.</a><a href="<?php echo wp_login_url(); ?>" tabindex="-1">.</a></div>
+	<div class="credit">This site was created by Kalil Smith-Nuevelle and Bea Malsky<a href="<?php echo wp_login_url(); ?>" tabindex="-1">.</a> Photos by <a href="//alexjungtcs.com">Alex Jung.</a></div>
 </footer>
 
 <?php wp_footer(); ?>
