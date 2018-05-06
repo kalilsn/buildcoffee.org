@@ -1,0 +1,22 @@
+{
+  "name": "buildcoffee",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Kalil Smith-Nuevelle"
+  ],
+  "license": "FPL",
+  "homepage": "https://github.com/kalilsn/buildcoffee-theme",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/js/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=2.1.4"
+  }
+}

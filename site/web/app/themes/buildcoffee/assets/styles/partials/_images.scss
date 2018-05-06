@@ -1,0 +1,18 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    max-width: initial;
+    width: auto;
+    height: auto;
+}
+
+.stretch-horizontal {
+    width: 100%;
+}
+
+.stretch-vertical {
+    height: 100%;
+}

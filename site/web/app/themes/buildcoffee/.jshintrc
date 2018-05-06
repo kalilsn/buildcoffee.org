@@ -1,0 +1,26 @@
+{
+    "bitwise": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "immed": true,
+    "newcap": true,
+    "esnext": true,
+    "camelcase": false,
+    "latedef": false,
+    "noarg": true,
+    "node": true,
+    "undef": true,
+    "browser": true,
+    "trailing": true,
+    "jquery": true,
+    "curly": true,
+    "supernew": true,
+    "laxcomma": true,
+    "globals": {
+        "WebFontConfig": true,
+        "throttle": true,
+        "debounce": true,
+        "jQuery": true,
+        "WebFont": true
+    }
+}

@@ -1,0 +1,25 @@
+.hours {
+    font-size: 1.2em;
+    @include phone {
+        font-size: 1em;
+    }
+    h1,h2,h3,h4,h5,h6,p {
+        margin: inherit 20px;
+    }
+    ul {
+        font-size: 1.7em;
+        @include phone {
+            font-size: 1.3em;
+        }
+        margin-bottom: 3em;
+    }
+
+    .day {
+        margin-right: 1em;
+    }
+
+    .day li {
+        font-weight: 700;
+        text-align: right;
+    }
+}

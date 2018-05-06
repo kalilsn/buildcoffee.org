@@ -1,0 +1,134 @@
+/* ==========================================================================
+   Home Page Template
+   ========================================================================== */
+
+.section {
+    min-height: 100vh;
+    padding: 60px 20px;
+    @include phone {
+        min-height: 0;
+        width: 100%;
+        padding: 60px 20px;
+    }
+    margin: 0 auto;
+    width: 80%;
+    max-width: $page-width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+
+    p {
+        width: 100%;
+    }
+}
+
+.img-grid {
+    margin-top: 4em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    & > div {
+        max-width: 100%;
+    }
+}
+
+.two-column.img-grid > div {
+    width: 49%;
+
+}
+
+.three-column.img-grid > div {
+    width: 32%;
+}
+
+
+.divider {
+    width: 100%;
+}
+
+
+.st1 {
+    animation: multicolor-dark 6s infinite;
+}
+
+.st2 {
+    animation: multicolor-light 6s infinite;
+}
+
+#shadow {
+    display: none;
+}
+
+#shadow,.st1,.st2 {
+    transition: 0.3s;
+}
+
+@keyframes loading-fade {
+    0% {opacity: 1}
+    100% {opacity: 0}
+}
+
+
+@keyframes multicolor-light {
+    0% {fill: rgb(238,160,165)}
+    13% {fill: rgb(237,176,13)}
+    25% {fill: rgb(226,237,13)}
+    38% {fill: rgb(133,237,13)}
+    50% {fill: rgb(13,237,195)}
+    63% {fill: rgb(99,170,255)}
+    75% {fill: rgb(203,160,238)}
+}
+@keyframes multicolor-dark {
+    0% {fill: rgb(178,52,94)}
+    13% {fill: rgb(178,132,10)}
+    25% {fill: rgb(170,178,10)}
+    38% {fill: rgb(100,178,10)}
+    50% {fill: rgb(10,178,147)}
+    63% {fill: rgb(75,128,192)}
+    75% {fill: rgb(153,120,179)}
+}
+
+
+@include bp-max(768px) {
+    .header-wrapper.after-scroll {
+        .nav {
+            flex-wrap: wrap;
+        }
+
+        .nav li {
+            width: 100%;
+            display: none;
+
+            &.selected {
+                display: block;
+                order: -1;
+            }
+        }
+
+        .nav.open li {
+            display: block;
+            background: rgba(255,255,255,0.9);
+            border-bottom: 1px solid #bbb;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background-color: $nav-hover-background;
+            }
+        }
+    }
+
+}
+
+@include bp-max(950px) {
+    .header-wrapper.after-scroll {
+        .social {
+            display: none;
+        }
+    }
+}
