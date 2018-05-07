@@ -42,4 +42,4 @@ if [[ ! -e $HOSTS_FILE ]]; then
   exit 0
 fi
 
-$DEPLOY_CMD
+${BASH_SOURCE%/*}/add-vault-pass.sh $DEPLOY_CMD
