@@ -130,21 +130,9 @@ module.exports = function(grunt) {
                 },
             },
         },
-
-        phpcs: {
-            php: {
-                src: ['*.php', 'lib/**/*.php']
-            },
-            options: {
-                bin: 'wpcs/vendor/bin/phpcs',
-                standard: 'phpcs.xml',
-                extensions: 'php',
-                ignore: 'wpcs',
-            }
-        },
     });
 
-    grunt.registerTask('build', ['clean', 'jshint', 'sass', 'autoprefixer', 'cssmin', 'uglify:dist', 'phpcs']);
+    grunt.registerTask('build', ['clean', 'jshint', 'sass', 'autoprefixer', 'cssmin', 'uglify:dist']);
     // register task
     grunt.registerTask('default', ['clean', 'jshint', 'sass', 'autoprefixer', 'cssmin', 'uglify:dev', 'watch']);
 };
