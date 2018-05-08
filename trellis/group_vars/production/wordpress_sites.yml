@@ -5,9 +5,9 @@
 wordpress_sites:
   buildcoffee.org:
     site_hosts:
-      - canonical: kalil.fyi
+      - canonical: buildcoffee.org
         redirects:
-          - www.kalil.fyi
+          - www.buildcoffee.org
     local_path: ../site # path targeting local Bedrock site directory (relative to Ansible root)
     repo: git@github.com:kalilsn/buildcoffee.org.git
     repo_subtree_path: site # relative path to your Bedrock/WP directory in your repo
