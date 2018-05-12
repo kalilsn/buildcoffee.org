@@ -11,7 +11,9 @@
     position: relative;
 
     .background-container {
-        transform: translateX(0%); //Ensures that fixed background image child affixes here
+        transform: translateX(
+            0%
+        ); //Ensures that fixed background image child affixes here
         width: 100%;
         position: absolute;
         height: 100%;
@@ -49,7 +51,7 @@
     border-radius: $logo-wrapper-size;
     height: $logo-wrapper-size;
     width: $logo-wrapper-size;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     margin-bottom: 3em;
     margin-right: 2em;
     @include phone {
@@ -58,15 +60,14 @@
 }
 
 .nameplate {
-    height: $nameplate-height;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     background: white;
     padding: 5px 15px;
 }
 
 .address {
     text-align: center;
-    margin-top: .5em;
+    margin-top: 0.5em;
     font-weight: 700;
     font-size: 1.5em;
     background: white;
@@ -105,7 +106,7 @@ nav {
             @include phone {
                 background-color: inherit;
             }
-            border-bottom-color: #6DAA7E;
+            border-bottom-color: #6daa7e;
             border-bottom-style: solid;
             border-bottom-width: 4px;
             @include phone {
@@ -118,7 +119,6 @@ nav {
         &:hover {
             background: $nav-hover-background;
         }
-
     }
 
     a {
@@ -152,7 +152,7 @@ nav {
     }
 
     .logo-wrapper {
-        margin-left: calc(6.25% - #{$nav-logo-height}/2);
+        margin-left: calc(6.25% - #{$nav-logo-height}/ 2);
         cursor: pointer;
         z-index: 2;
 
@@ -176,7 +176,7 @@ nav {
         //horrible flexbox hack from http://stackoverflow.com/questions/32551291/in-css-flexbox-why-are-there-no-justify-items-and-justify-self-properties/33856609#33856609
         position: absolute;
         left: 50%;
-        transform: translate(-50%,0);
+        transform: translate(-50%, 0);
         top: 0;
         width: $nav-width;
         @include phone {
@@ -204,7 +204,7 @@ nav {
                 justify-content: center;
                 align-items: center;
                 flex: 1;
-                margin: 0 .5em;
+                margin: 0 0.5em;
                 height: $nav-height;
                 background: initial;
             }
@@ -220,7 +220,8 @@ nav {
         }
     }
 
-    .st1,.st2 {
+    .st1,
+    .st2 {
         fill: #000;
         animation: none;
     }
