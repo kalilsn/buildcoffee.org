@@ -182,13 +182,7 @@
 		</div>
 		<nav>
 			<?php
-				$defaults = [
-					'theme_location' => 'primary',
-					'container' => '',
-					'menu_id' => 'nav',
-					'menu_class' => 'nav',
-				];
-				wp_nav_menu( $defaults );
+			bc_nav_menu();
 			?>
 		</nav>
 		<div class="social">

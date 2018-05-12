@@ -46,28 +46,6 @@ function bc_filter_yoast_seo_metabox() {
 	return 'low';
 }
 
-
-//Convert all links in menu from eg. /about/ to /#about
-add_filter( 'nav_menu_link_attributes', 'scrolling_nav_links', 10, 3 );
-function scrolling_nav_links( $atts, $item, $args ) {
-	$anchor = '#' . strtolower( $item->title );
-	$atts['href'] = $anchor;
-	return $atts;
-}
-
-
-//Remove unnecessary classes and ids from nav menu
-// https://wordpress.stackexchange.com/questions/12784/wp-nav-menu-remove-class-and-id-from-li
-add_filter( 'nav_menu_item_id', 'clear_nav_menu_item_id', 10, 3 );
-function clear_nav_menu_item_id( $id, $item, $args ) {
-	return '';
-}
-
-add_filter( 'nav_menu_css_class', 'clear_nav_menu_item_class', 10, 3 );
-function clear_nav_menu_item_class( $classes, $item, $args ) {
-	return [];
-}
-
 //Hide admin bar
 add_filter( 'show_admin_bar', '__return_false' );
 
