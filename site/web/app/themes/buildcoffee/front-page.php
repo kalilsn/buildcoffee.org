@@ -15,6 +15,8 @@ get_header( 'home' ); ?>
 		'orderby' => 'menu_order',
 		'order' => 'ASC',
 		'post_parent' => 0,
+		'meta_key' => ['exclude_from_homepage'],
+		'meta_compare' => 'NOT EXISTS'
 	];
 	$home_query = new WP_Query( $args );
 	while ( $home_query->have_posts() ) {
