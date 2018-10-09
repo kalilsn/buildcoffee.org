@@ -28,7 +28,7 @@ function bc_add_capabilities( $posttype ) {
 }
 
 function bc_nav_menu() {
-	$pages = get_pages(['parent' => 0, 'sort_column' => 'menu_order']);
+	$pages = get_pages(['parent' => 0, 'sort_column' => 'menu_order', 'exclude' => '729']);
 	?>
 	<ul id="nav" class="nav">
 		<?php
