@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>Build Coffee Open Call for Artists</title>
+	<title>The Build Coffee Meal-Based Residency Program</title>
 	<?php $base_url = get_template_directory_uri(); ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,29 @@
 	<link rel="shortcut icon" href="<?php echo $base_url ?>/assets/images/icons/favicon.ico">
 	<meta name="msapplication-config" content="<?php echo $base_url ?>/assets/images/icons/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
+
+	<!-- Tags generated from https://megatags.co/ -->
+	<!-- Search Engine -->
+	<meta name="description" content="Build Coffee seeks local artists to grace our walls and drink our lattes. Applications are open through November 2.">
+	<meta name="image" content="https://images.typeform.com/images/wnTxUgiTjqvC">
+	<!-- Schema.org for Google -->
+	<meta itemprop="name" content="The Build Coffee Meal-Based Residency Program">
+	<meta itemprop="description" content="Build Coffee seeks local artists to grace our walls and drink our lattes. Applications are open through November 2.">
+	<meta itemprop="image" content="https://images.typeform.com/images/wnTxUgiTjqvC">
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="The Build Coffee Meal-Based Residency Program">
+	<meta name="twitter:description" content="Build Coffee seeks local artists to grace our walls and drink our lattes. Applications are open through November 2.">
+	<meta name="twitter:site" content="@buildcoffee">
+	<meta name="twitter:image:src" content="https://images.typeform.com/images/wnTxUgiTjqvC">
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta name="og:title" content="The Build Coffee Meal-Based Residency Program">
+	<meta name="og:description" content="Build Coffee seeks local artists to grace our walls and drink our lattes. Applications are open through November 2.">
+	<meta name="og:image" content="https://images.typeform.com/images/wnTxUgiTjqvC">
+	<meta name="og:url" content="https://buildcoffee.org/residency/">
+	<meta name="og:site_name" content="The Build Coffee Meal-Based Residency Program">
+	<meta name="og:type" content="website">
+
 	<style type="text/css">
 		html {
 			margin: 0;
